@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.binary_search.BinarySearch;
+import org.example.enamRoman.TranslateColor;
 import org.example.factorial.FactorialСycle;
 import org.example.factorial.RecursionFactorial;
 import org.example.hashMap.PhoneBook;
@@ -37,6 +38,8 @@ public class App {
         int[] arr4 = {4, 5};
 
         int f = 5;
+
+        System.out.println(TranslateColor.GREEN);
 
         PhoneBook phoneBook = new PhoneBook();
         System.out.println(phoneBook.convertToStringName(222));
