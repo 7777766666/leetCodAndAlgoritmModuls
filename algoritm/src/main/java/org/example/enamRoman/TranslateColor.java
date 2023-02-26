@@ -12,7 +12,7 @@ public enum TranslateColor {
 
     private final String color;
 
-    public String getColor(){
+    public String getColorToRussian(){
         return color;
     }
 
