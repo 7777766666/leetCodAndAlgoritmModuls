@@ -13,7 +13,7 @@ public class PhoneBook {
     }
 
     public String convertToStringName(int x){
-        x = (Integer) x;
+//        x = (Integer) x;
         PhoneBook phoneBook = new PhoneBook();
         return phoneBook.hashMap.get(x);
     }

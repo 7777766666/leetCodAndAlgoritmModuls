@@ -1,6 +1,8 @@
 package org.example;
 
 import org.example.binary_search.BinarySearch;
+import org.example.enamRoman.EnumRomanToArabic;
+import org.example.enamRoman.RomanAndArab;
 import org.example.enamRoman.TranslateColor;
 import org.example.factorial.FactorialСycle;
 import org.example.factorial.RecursionFactorial;
@@ -38,14 +40,51 @@ public class App {
         int[] arr4 = {4, 5};
 
         int f = 5;
+        String str = "v";
+        String[] arabToRoman = new String[1];
 
-        System.out.println(TranslateColor.GREEN);
 
+//        RomanAndArab romanAndArab = RomanAndArab.valueOf(str.toUpperCase());
+//        System.out.println(romanAndArab + "  work method");
+        RomanAndArab[] values = RomanAndArab.values();
+
+        for (int i = 0; i < values.length; i++) {
+            if (values[i].getX() == f){
+                System.out.println("SUPER int f");
+            }
+            if (values[i].getStr().equalsIgnoreCase(str)) {
+                System.out.println("GREAT String from v " );
+            }
+
+        }
+
+
+//        System.out.println(str.toUpperCase());
+//        if (str.equalsIgnoreCase(RomanAndArab.V.getStr())){
+//            System.out.println("Good!");
+//        }
+//
+//        System.out.println(RomanAndArab.IV.getStr() + " RomanAndArab " + RomanAndArab.IV.getX());
+//        System.out.println(Arrays.toString(RomanAndArab.values()));
+//        RomanAndArab romanAndArab = Ro
+//        for (int i = 0; i < RomanAndArab.; i++) {
+//            if (arr3[i] == f){
+//
+//                System.out.println("I find element in enum: " );
+//            }
+
+//        }
+
+
+//        TranslateColor translateColor = TranslateColor.RED;
+//        System.out.println((translateColor.getColorToRussian()) + " работа с энам");
+//        System.out.println((TranslateColor.GREEN.getColorToRussian()) + " работа с энам");
+//
         PhoneBook phoneBook = new PhoneBook();
-        System.out.println(phoneBook.convertToStringName(222));
-
-        RomeToArabic romeToArabic = new RomeToArabic();
-        System.out.println((romeToArabic.superConverter("L") + romeToArabic.superConverter("V")) + " римские в арабские цифры");
+        System.out.println((phoneBook.convertToStringName(222)) + " конвертируем число в строку по HashMap");
+//
+//        RomeToArabic romeToArabic = new RomeToArabic();
+//        System.out.println((romeToArabic.superConverter("L") + romeToArabic.superConverter("V")) + " римские в арабские цифры");
 
         TryAgainMultiTable.tryAgainMultiTable(arr4);
 
@@ -55,10 +94,10 @@ public class App {
 //
 //        MultiplicationTableArray.multiplicationTable(arr3);
 
-        System.out.println(Arrays.toString(SortBigToSmall.sortBigToSmall(arrForSort3)));
+        System.out.println((Arrays.toString(SortBigToSmall.sortBigToSmall(arrForSort3))) + " Сортируем рекурсией от большего к меньшему");
 
         int[] returnSortArr = SortReturnArrMy.sortReturnArrMy(arr3);
-        System.out.println(Arrays.toString(returnSortArr));
+        System.out.println((Arrays.toString(returnSortArr)) + "  сортируем рекурсией");
 
         MyTrySort.myTrySort(arrForSort2);
         System.out.println(Arrays.toString(arrForSort2));
