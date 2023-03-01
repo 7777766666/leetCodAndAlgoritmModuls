@@ -27,29 +27,35 @@ public class Deikstr {
     }
     public int addBestElement() {
         int count = 0;
-        int[] check = new int[2];
+        int[] checkInt = new int[2];
+        String[] checkString = new String[2];
+        String[] arcCheck = new String[2];
 
         for (int i = 0; i < allElements.length; i++) {
 
             if (finalTable.get(allElements[i]) != null) {
+                checkString[count] = allElements[i];
                String element = allElements[i];
                Optional<String> pointChoose = point(element.toUpperCase());
+               arcCheck[count] = pointChoose.get().toUpperCase();
                if (pointChoose.isPresent()){
                    Integer arcWay = arc.get(pointChoose.get());
                    Integer intFinalTable = finalTable.get(element.toLowerCase());
                    int forChoose = arcWay + intFinalTable;
-                   check[count++] = forChoose;
+                   checkInt[count++] = forChoose;
 
-                   System.out.println(Arrays.toString(check));
+                   System.out.println(Arrays.toString(checkInt));
                }
                 if (count == 2)
                     break;
            }
         }
-        if (check[1] == 0 || check[0] <= check[1]){
-            return check[0];
+        if (checkInt[1] == 0 || checkInt[0] <= checkInt[1]){
+            addAndDelete(arcCheck[0], checkString[0], checkInt[0]);
+            return checkInt[0];
         } else
-            return check[1];
+            addAndDelete(arcCheck[1], checkString[1], checkInt[1] );
+            return checkInt[1];
 
     }
     static String[] allElements = {"a", "b", "c", "d"};
