@@ -8,6 +8,18 @@ import java.util.Set;
 
 public class Deikstr {
 
+    public void soutAll() {
+        System.out.println(finalTable.size()
+                + "  a element  " + finalTable.get("a")
+                + "  b element  " + finalTable.get("b")
+                + "  c element  " + finalTable.get("c")
+                + "  d element  " + finalTable.get("d")
+                + "  arc size  " + arc.size()
+        );
+
+
+    }
+
     HashMap<String, Integer> arc = new LinkedHashMap<>();
 
     HashMap<String, Integer> finalTable = new LinkedHashMap<>();
@@ -16,48 +28,54 @@ public class Deikstr {
 
         arc.put("AB", 10);
         arc.put("AD", 30);
-        arc.put("BC", 19);
+        arc.put("BC", 21);
         arc.put("BD", 25);
         arc.put("CD", 30);
 
-        finalTable.put("a", 0);       //a = 0;
-        finalTable.put("b", null);    //b = 10;
-        finalTable.put("c", null);    //c = null;
-        finalTable.put("d", null);
+        finalTable.put("a", 0);
+        finalTable.put("b", null);    //10
+        finalTable.put("c", null);    //30
+        finalTable.put("d", null);    //31
     }
+
     public int addBestElement() {
         int count = 0;
         int[] checkInt = new int[2];
         String[] checkString = new String[2];
         String[] arcCheck = new String[2];
+        int finalToTable = -1;
 
         for (int i = 0; i < allElements.length; i++) {
-
+            if (count == 2) {
+                finalToTable = i;
+                break;
+            }
             if (finalTable.get(allElements[i]) != null) {
                 checkString[count] = allElements[i];
-               String element = allElements[i];
-               Optional<String> pointChoose = point(element.toUpperCase());
-               arcCheck[count] = pointChoose.get().toUpperCase();
-               if (pointChoose.isPresent()){
-                   Integer arcWay = arc.get(pointChoose.get());
-                   Integer intFinalTable = finalTable.get(element.toLowerCase());
-                   int forChoose = arcWay + intFinalTable;
-                   checkInt[count++] = forChoose;
+                String element = allElements[i];
+                Optional<String> pointChoose = point(element.toUpperCase());
+                if (pointChoose.isPresent()) {
+                    arcCheck[count] = pointChoose.get().toUpperCase();
 
-                   System.out.println(Arrays.toString(checkInt));
-               }
-                if (count == 2)
-                    break;
-           }
+                    Integer arcWay = arc.get(pointChoose.get());
+                    Integer intFinalTable = finalTable.get(element.toLowerCase());
+                    int forChoose = arcWay + intFinalTable;
+                    checkInt[count++] = forChoose;
+
+                    System.out.println(Arrays.toString(checkInt));
+                }
+
+            }
         }
-        if (checkInt[1] == 0 || checkInt[0] <= checkInt[1]){
-            addAndDelete(arcCheck[0], checkString[0], checkInt[0]);
+        if (checkInt[1] == 0 || checkInt[0] <= checkInt[1]) {
+            addAndDelete(arcCheck[0], allElements[finalToTable], checkInt[0]);
             return checkInt[0];
         } else
-            addAndDelete(arcCheck[1], checkString[1], checkInt[1] );
-            return checkInt[1];
+            addAndDelete(arcCheck[1], allElements[finalToTable], checkInt[1]);
+        return checkInt[1];
 
     }
+
     static String[] allElements = {"a", "b", "c", "d"};
 
     public String pointFistName() {
@@ -118,8 +136,6 @@ public class Deikstr {
     }
 
 
-
-
     public static void main(String[] args) {
         Deikstr deikstr = new Deikstr();
 
@@ -130,16 +146,12 @@ public class Deikstr {
         System.out.println(deikstr.pointFinal() + "   point for merge FINAL");
         Integer numForPoint = deikstr.arc.get(toNextPoint);
         deikstr.addAndDelete(toNextPoint, deikstr.pointFinal(), numForPoint);
-        int bestElement = deikstr.addBestElement();
 
+        deikstr.addBestElement();
+        deikstr.soutAll();
+        deikstr.addBestElement();
+        deikstr.soutAll();
 
-        System.out.println(deikstr.finalTable.size()
-                + "  a element  " + deikstr.finalTable.get("a")
-                + "  b element  " + deikstr.finalTable.get("b")
-                + "  c element  " + deikstr.finalTable.get("c")
-                + "  d element  " + deikstr.finalTable.get("d")
-                + "  arc size  " + deikstr.arc.size()
-        );
 
     }
 }
