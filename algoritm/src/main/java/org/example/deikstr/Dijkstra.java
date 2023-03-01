@@ -45,16 +45,16 @@ public class Dijkstra {
         int count = 0;
         int[] checkInt = new int[2];
         String[] arcCheck = new String[2];
-        int finalToTable = -1;
+        String finalToTable = "";
 
         for (int i = 0; i < allElements.length; i++) {
             if (count == 2) {
-                finalToTable = i;
                 break;
             }
             if (finalTable.get(allElements[i]) != null) {
                 String element = allElements[i];
                 Optional<String> pointChoose = point(element.toUpperCase());
+                System.out.println(pointChoose + "   pointChoose");
                 if (pointChoose.isPresent()) {
                     arcCheck[count] = pointChoose.get().toUpperCase();
                     Integer arcWay = arc.get(pointChoose.get());
@@ -62,14 +62,25 @@ public class Dijkstra {
                     int forChoose = arcWay + intFinalTable;
                     checkInt[count++] = forChoose;
 
-                    System.out.println(Arrays.toString(checkInt));
+//                    String[] splitEdge = pointChoose.get().split("");
+                    String[] splitEdge = pointChoose.get().split("");
+                    for (int j = 0; j < splitEdge.length; j++) {
+                        if (splitEdge[0].equalsIgnoreCase(element)) {
+                            finalToTable = splitEdge[1].toLowerCase();
+                        }else {
+                            finalToTable = splitEdge[0].toLowerCase();
+                        }
+
+
+                        System.out.println(Arrays.toString(checkInt));
+                    }
                 }
             }
+            if (checkInt[1] == 0 || checkInt[0] <= checkInt[1]) {
+                addAndDelete(arcCheck[0], finalToTable, checkInt[0]);
+            } else
+                addAndDelete(arcCheck[1], finalToTable, checkInt[1]);
         }
-        if (checkInt[1] == 0 || checkInt[0] <= checkInt[1]) {
-            addAndDelete(arcCheck[0], allElements[finalToTable], checkInt[0]);
-        } else
-            addAndDelete(arcCheck[1], allElements[finalToTable], checkInt[1]);
     }
 
     private static final String[] allElements = {"a", "b", "c", "d"};
@@ -135,7 +146,6 @@ public class Dijkstra {
         dijkstra.printAll();
         dijkstra.addBestElement();
         dijkstra.printAll();
-
 
 
     }
