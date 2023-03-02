@@ -6,16 +6,13 @@ import java.util.stream.Collectors;
 
 public class DijkstraAlg {
 
-    private static final int[] arcInt = {10, 5, 3, 100, 2};
-    private static final String[] arcString = {"AB", "AD", "BC", "CD", "BD"};
+    private static final int[] arcInt = {10, 5, 3, 100, 2, 0};
+    private static final String[] arcString = {"AB", "AD", "BC", "CD", "BD", "AA"};
     HashMap<Integer, String> hashInt = new HashMap<>();
     HashMap<String, Integer> hashStr = new HashMap<>();
     HashMap<String, Integer> hashFinal = new HashMap<>();
 
-    public DijkstraAlg()
-    {
-        hashFinal.put(arcString[0], 0);
-    }
+
 
     public static void addToHash(int[] arcInt, String[] arcString,
                                  HashMap<Integer, String> hashInt, HashMap<String, Integer> hashStr) {
@@ -44,15 +41,18 @@ public class DijkstraAlg {
         if (pointAll.length == hashFinal.size()) {
             System.out.println("BINGO, I hope!");
         }else {
-            for (String xxx : arcString) {
-                if (xxx.contains(pointAll[hashFinal.size() - 1])) {
-                    arcs[w++] = xxx;
-                }
+            for (int i = 0; i <= hashFinal.size(); i++) {
+                String element = pointAll[i];
+                System.out.println(arcs[i] + " ##############");
+                if (arcString[i].contains(element)) {
 
+                }
             }
+
         }
         return arcs;
     }
+
 
 
     public static void main(String[] args) {
@@ -60,12 +60,25 @@ public class DijkstraAlg {
 
         addToHash(arcInt, arcString, alg.hashInt, alg.hashStr); //put elements to 2 hashMap mirror
 
-        String[] pointAll = pointArr(arcString); // all points (Up letters)
+        final String[] pointAll = pointArr(arcString); // all points (Up letters)
 
         String[] arcPointReturn = arcPoint(arcString, alg.hashFinal, pointAll);
         System.out.println(Arrays.toString(arcPointReturn) + "  arcPointReturn");
 
         System.out.println(Arrays.toString(arcString) + "  arcString");
+
+
+        String[] realPoint = new String[pointAll.length];
+        for (int i = 0; i < realPoint.length; i++) {
+            if (alg.hashFinal.get(pointAll[i]) != null) {
+                realPoint[i] = pointAll[i];
+                System.out.println((Arrays.toString(realPoint)) + "  realPoint");
+            }
+        }
+
+
+
+
 
 
     }
