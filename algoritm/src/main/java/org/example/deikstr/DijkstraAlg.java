@@ -44,12 +44,17 @@ public class DijkstraAlg {
             for (int i = 0; i <= hashFinal.size(); i++) {
                 String element = pointAll[i];
                 System.out.println(arcs[i] + " ##############");
-                if (arcString[i].contains(element)) {
+                for (int j = 0; j < arcString.length; j++) {
+                    if (arcString[j].contains(element)) {
+//                        int count = 0;
+                        arcs[j] = arcString[j];
 
+                    }
                 }
             }
 
         }
+        System.out.println(Arrays.toString(arcs)  + " arcs A letter");
         return arcs;
     }
 
@@ -68,13 +73,13 @@ public class DijkstraAlg {
         System.out.println(Arrays.toString(arcString) + "  arcString");
 
 
-        String[] realPoint = new String[pointAll.length];
-        for (int i = 0; i < realPoint.length; i++) {
-            if (alg.hashFinal.get(pointAll[i]) != null) {
-                realPoint[i] = pointAll[i];
-                System.out.println((Arrays.toString(realPoint)) + "  realPoint");
-            }
-        }
+//        String[] realPoint = new String[pointAll.length];
+//        for (int i = 0; i < realPoint.length; i++) {
+//            if (alg.hashFinal.get(pointAll[i]) != null) {
+//                realPoint[i] = pointAll[i];
+//                System.out.println((Arrays.toString(realPoint)) + "  realPoint");
+//            }
+//        }
 
     }
 }
