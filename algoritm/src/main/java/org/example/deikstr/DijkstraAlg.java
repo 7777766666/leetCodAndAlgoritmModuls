@@ -36,7 +36,6 @@ public class DijkstraAlg {
     }
 
     public static String[] arcPoint(String[] arcString, HashMap<String, Integer> hashFinal, String[] pointAll){
-        int w = 0;
         String[] arcs = new String[arcString.length];
         if (pointAll.length == hashFinal.size()) {
             System.out.println("BINGO, I hope!");
@@ -46,9 +45,7 @@ public class DijkstraAlg {
                 System.out.println(arcs[i] + " ##############");
                 for (int j = 0; j < arcString.length; j++) {
                     if (arcString[j].contains(element)) {
-//                        int count = 0;
                         arcs[j] = arcString[j];
-
                     }
                 }
             }
@@ -57,6 +54,23 @@ public class DijkstraAlg {
         System.out.println(Arrays.toString(arcs)  + " arcs A letter");
         return arcs;
     }
+
+    public static String shortest(String[] arcPointReturn, HashMap<String, Integer> hashFinal, String[] po ){
+        int elementFinal = hashFinal.size();
+        if (hashFinal.size() == 0) {
+
+
+
+        }
+            for (int i = 0; i < arcPointReturn.length; i++) {
+
+            }
+
+
+
+        return "";
+    }
+
 
 
 
@@ -67,19 +81,16 @@ public class DijkstraAlg {
 
         final String[] pointAll = pointArr(arcString); // all points (Up letters)
 
-        String[] arcPointReturn = arcPoint(arcString, alg.hashFinal, pointAll);
-        System.out.println(Arrays.toString(arcPointReturn) + "  arcPointReturn");
+        String[] arcPointReturn = arcPoint(arcString, alg.hashFinal, pointAll);  //return Arr arc for letter/s
+
+        shortest(arcPointReturn, alg.hashFinal, pointAll);
+
+
+
+
 
         System.out.println(Arrays.toString(arcString) + "  arcString");
 
-
-//        String[] realPoint = new String[pointAll.length];
-//        for (int i = 0; i < realPoint.length; i++) {
-//            if (alg.hashFinal.get(pointAll[i]) != null) {
-//                realPoint[i] = pointAll[i];
-//                System.out.println((Arrays.toString(realPoint)) + "  realPoint");
-//            }
-//        }
 
     }
 }
