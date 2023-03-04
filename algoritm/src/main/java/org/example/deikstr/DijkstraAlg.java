@@ -173,9 +173,14 @@ public class DijkstraAlg {
 
         String[] shortestLength = arcWithPoint(alg.hashFinal, pointAll, pointFinalStr);
 
+        minValue(shortestLength, pointFinalStr, alg.hashFinal, alg.hashStr);
+
+
         System.out.println((Arrays.toString(pointFinalStr)) + "    pointFinalStr");
         System.out.println((alg.hashFinal.get(pointFinalStr[0])) + "   pointFinalStr get from hashFinal");
         System.out.println(Arrays.toString(shortestLength) + "  shortestLength");
+
+
 
         System.out.println((alg.hashFinal.size()) + "    hashFinal");
         System.out.println((alg.hashStr.keySet()) + " all arc after dell");
