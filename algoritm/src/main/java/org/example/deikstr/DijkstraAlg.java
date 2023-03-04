@@ -1,5 +1,8 @@
 package org.example.deikstr;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -58,11 +61,13 @@ public class DijkstraAlg {
         return forChooseArc;
     }
 
-    public static Integer minValue(String[] shortestLength, String[] pointFinalStr,
+    public static void minValue(String[] shortestLength, String[] pointFinalStr,
                                    HashMap<String, Integer> hashFinal, HashMap<String, Integer> hashStr) {
+
 
         Integer[] minWay = new Integer[shortestLength.length];
         for (int i = 0; i < pointFinalStr.length; i++) {
+
             if (pointFinalStr[i] != null) {
                 for (int w = 0; w < shortestLength.length; w++) {
                     if (shortestLength[w] != null) {
@@ -71,21 +76,21 @@ public class DijkstraAlg {
                         Integer pointPlusArc = (intPoint + intArc);
                         minWay[w] = pointPlusArc;
                     }
-
-
                 }
             }
         }
         System.out.println((Arrays.toString(minWay)) + "  minWay");
-        int minWayNew = minResult(minWay);
+        int minWayNew = minResult(minWay);              // минимальное значение из массива
         String realShort = arcShortest(shortestLength, minWayNew, hashStr);
         System.out.println(minWayNew + "  minWayNew  + realShort  " + realShort);
-        savePoint(minWayNew, realShort, hashFinal, pointFinalStr);
-
-
-
-        return 5;
-
+        String forFinalAddPoint = pointToADDFinal(realShort, pointFinalStr);
+        System.out.println(forFinalAddPoint + "    forFinalAddPoint ");
+        hashFinal.put(forFinalAddPoint, minWayNew);
+        pointFinalStr[hashFinal.size() - 1] = forFinalAddPoint;
+        System.out.println(Arrays.toString(pointFinalStr) + "   pointFinalStr in inValue");
+        System.out.println((hashStr.size()) + "   hashStr size before dell");
+        hashStr.remove(realShort);
+        System.out.println((hashStr.size()) + "  hashStr size after dell");
     }
 
     private static int minResult(Integer[] minWay) {
@@ -100,28 +105,51 @@ public class DijkstraAlg {
             if (shortestLength[i] != null &&  minWayNew == hashStr.get(shortestLength[i])) {
                 String realShortP =  shortestLength[i];
                 return realShortP;
-
             }
         }
         return "ERROR!!!!";
     }
 
+    private static String pointToADDFinal(String realShort, String[] pointFinalStr){
+        for (int i = 0; i < pointFinalStr.length; i++) {
+            if (pointFinalStr[i] != null) {
+                if (realShort.contains(pointFinalStr[i])) {
+                    String[] arcSplit = new BufferedReader(new StringReader(realShort)) //arc to arr 2 parts
+                            .lines()
+                            .flatMap(str -> Arrays.stream(str.split("")))
+                            .toArray(String[]::new);
+                    if (realShort.equalsIgnoreCase(arcSplit[0])){
+                        return arcSplit[1];
+                    } else {
+                        return arcSplit[0];
+                    }
+                }
+            }
+        }
+        return "ERROR from pointToADDFinal";
+    }
+
+
+
     private static void savePoint(Integer minWayNew, String realShort, HashMap <String, Integer> hashFinal,
-                                  String[] pointFinalStr) {
-//        String[] split = realShort.split("");
-//        if (realShort.contains()) {
-//
-//        }
+                                  String[] pointFinalStr) throws FileNotFoundException {
+        String[] splitArc = new BufferedReader(new StringReader(realShort))
+                .lines()
+                .flatMap(str -> Arrays.stream(str.split("")))
+                .toArray(String[]::new);
+//        if (splitArc[0].equalsIgnoreCase())
+
 
         hashFinal.put(realShort, minWayNew);
 
-
-            if (pointFinalStr[0] != null) {
-                pointFinalStr[0] = realShort;
-
-        }
     }
 
+    private static String[] strToArr(String realShort) {
+        return new BufferedReader(new StringReader(realShort))
+                .lines()
+                .flatMap(str -> Arrays.stream(str.split("")))
+                .toArray(String[]::new);
+    }
 
     public static String[] arcToLetters(String[] arcPointReturn) {  //принимаем ребра, возвращаем точки
         ArrayList<String> toList = Arrays.stream(arcPointReturn)
@@ -143,17 +171,14 @@ public class DijkstraAlg {
         final String[] pointFinalStr = new String[pointAll.length]; //array of real Points with null initial
 
 
-//        String[] arcPointReturn = arcPoint(arcString, alg.hashFinal, pointAll);  //[AB, AD, null, null, null, AA] for A
-
         String[] shortestLength = arcWithPoint(alg.hashFinal, pointAll, pointFinalStr);
 
         System.out.println((Arrays.toString(pointFinalStr)) + "    pointFinalStr");
         System.out.println((alg.hashFinal.get(pointFinalStr[0])) + "   pointFinalStr get from hashFinal");
         System.out.println(Arrays.toString(shortestLength) + "  shortestLength");
-//        System.out.println((Arrays.toString(sumPoint(shortestLength, pointAll, alg.hashFinal, alg.hashStr))) + "  result int");
 
-        System.out.println(((minValue(shortestLength, pointFinalStr, alg.hashFinal, alg.hashStr))) + " == A");
         System.out.println((alg.hashFinal.size()) + "    hashFinal");
+        System.out.println((alg.hashStr.keySet()) + " all arc after dell");
 
 
     }
