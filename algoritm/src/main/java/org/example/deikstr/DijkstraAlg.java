@@ -7,7 +7,6 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class DijkstraAlg {
-//    private final static String startPoint = "A";
 
     private static final int[] arcInt = {10, 5, 3, 100, 2, 0};
     private static final String[] arcString = {"AB", "AD", "BC", "CD", "BD", "AA"};
@@ -77,15 +76,51 @@ public class DijkstraAlg {
                 }
             }
         }
-        return Arrays.stream(minWay)
-                .filter(Objects::nonNull)
-//                .distinct()
-                .min(Integer::compareTo)
-                .orElse(-1000);
+        System.out.println((Arrays.toString(minWay)) + "  minWay");
+        int minWayNew = minResult(minWay);
+        String realShort = arcShortest(shortestLength, minWayNew, hashStr);
+        System.out.println(minWayNew + "  minWayNew  + realShort  " + realShort);
+        savePoint(minWayNew, realShort, hashFinal, pointFinalStr);
 
+
+
+        return 5;
 
     }
 
+    private static int minResult(Integer[] minWay) {
+        return Arrays.stream(minWay)
+                .filter(Objects::nonNull)
+                .min(Integer::compareTo)
+                .orElse(-1000);
+    }
+
+    private static String arcShortest(String[] shortestLength, int minWayNew, HashMap<String, Integer> hashStr) {
+        for (int i = 0; i < shortestLength.length; i++) {
+            if (shortestLength[i] != null &&  minWayNew == hashStr.get(shortestLength[i])) {
+                String realShortP =  shortestLength[i];
+                return realShortP;
+
+            }
+        }
+        return "ERROR!!!!";
+    }
+
+    private static void savePoint(Integer minWayNew, String realShort, HashMap <String, Integer> hashFinal,
+                                  String[] pointFinalStr) {
+//        String[] split = realShort.split("");
+//        if (realShort.contains()) {
+//
+//        }
+
+        hashFinal.put(realShort, minWayNew);
+
+
+            if (pointFinalStr[0] != null) {
+                pointFinalStr[0] = realShort;
+
+        }
+    }
 
 
     public static String[] arcToLetters(String[] arcPointReturn) {  //принимаем ребра, возвращаем точки
@@ -118,6 +153,7 @@ public class DijkstraAlg {
 //        System.out.println((Arrays.toString(sumPoint(shortestLength, pointAll, alg.hashFinal, alg.hashStr))) + "  result int");
 
         System.out.println(((minValue(shortestLength, pointFinalStr, alg.hashFinal, alg.hashStr))) + " == A");
+        System.out.println((alg.hashFinal.size()) + "    hashFinal");
 
 
     }
