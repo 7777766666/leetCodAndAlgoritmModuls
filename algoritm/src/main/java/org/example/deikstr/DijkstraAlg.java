@@ -17,7 +17,6 @@ public class DijkstraAlg {
     HashMap<String, Integer> hashStr = new HashMap<>();
     HashMap<String, Integer> hashFinal = new HashMap<>();
 
-
     public static void addToHash(int[] arcInt, String[] arcString,
                                  HashMap<Integer, String> hashInt, HashMap<String, Integer> hashStr) {
         for (int i = 0; i < arcInt.length; i++) {
@@ -42,8 +41,10 @@ public class DijkstraAlg {
     }
 
 
-    public static String[] arcWithPoint(HashMap<String, Integer> hashFinal, String[] pointAll, String[] pointFinalStr) {
-        String[] forChooseArc = new String[arcString.length];
+    public static String[] arcWithPoint(HashMap<String, Integer> hashFinal, String[] pointAll, String[] pointFinalStr,
+                                        String[] arcStringsNew) {
+        String[] forChooseArc = new String[arcStringsNew.length];
+//        int c = 0;
         if (hashFinal.size() == 0) {
             pointFinalStr[0] = pointAll[0];
             hashFinal.put(pointFinalStr[0], 0);
@@ -51,9 +52,12 @@ public class DijkstraAlg {
         }
         for (int i = 0; i < pointFinalStr.length; i++) {
             if (pointFinalStr[i] != null) {
-                for (int w = 0; w < arcString.length; w++) {
-                    if (arcString[w].contains(pointFinalStr[i])) {
-                        forChooseArc[w] = arcString[w]; //all arc, which contains pointFinalStr
+
+
+                for (int w = 0; w < arcStringsNew.length; w++) {
+                    if (arcStringsNew[w] != null && arcStringsNew[w].contains(pointFinalStr[i])) {  //dont wright BC CD
+
+                        forChooseArc[w] = arcStringsNew[w]; //all arc, which contains pointFinalStr
                     }
                 }
             }
@@ -61,8 +65,8 @@ public class DijkstraAlg {
         return forChooseArc;
     }
 
-    public static void minValue(String[] shortestLength, String[] pointFinalStr,
-                                   HashMap<String, Integer> hashFinal, HashMap<String, Integer> hashStr) {
+    public static void minValue(String[] shortestLength, String[] pointFinalStr, HashMap<String, Integer> hashFinal,
+                                HashMap<String, Integer> hashStr, String[] arcStringNew) {
 
 
         Integer[] minWay = new Integer[shortestLength.length];
@@ -91,6 +95,13 @@ public class DijkstraAlg {
         System.out.println((hashStr.size()) + "   hashStr size before dell");
         hashStr.remove(realShort);
         System.out.println((hashStr.size()) + "  hashStr size after dell");
+
+        for (int i = 0; i < arcStringNew.length; i++) {
+            if (arcStringNew[i] != null && arcStringNew[i].equalsIgnoreCase(realShort)) {
+                arcStringNew[i] = null;
+            }
+        }
+
     }
 
     private static int minResult(Integer[] minWay) {
@@ -118,30 +129,15 @@ public class DijkstraAlg {
                             .lines()
                             .flatMap(str -> Arrays.stream(str.split("")))
                             .toArray(String[]::new);
-                    if (realShort.equalsIgnoreCase(arcSplit[0])){
-                        return arcSplit[1];
-                    } else {
-                        return arcSplit[0];
+                    for (int j = 0; j <pointFinalStr.length; j++) {
+                        if (pointFinalStr[j].contains(arcSplit[0])) {       //!!!!!!!!!!!!!
+                            return arcSplit[1];
+                        }
                     }
                 }
             }
         }
         return "ERROR from pointToADDFinal";
-    }
-
-
-
-    private static void savePoint(Integer minWayNew, String realShort, HashMap <String, Integer> hashFinal,
-                                  String[] pointFinalStr) throws FileNotFoundException {
-        String[] splitArc = new BufferedReader(new StringReader(realShort))
-                .lines()
-                .flatMap(str -> Arrays.stream(str.split("")))
-                .toArray(String[]::new);
-//        if (splitArc[0].equalsIgnoreCase())
-
-
-        hashFinal.put(realShort, minWayNew);
-
     }
 
     private static String[] strToArr(String realShort) {
@@ -160,31 +156,50 @@ public class DijkstraAlg {
         return toList.toArray(new String[0]);
     }
 
-
-
     public static void main(String[] args) {
         DijkstraAlg alg = new DijkstraAlg();
 
+
         addToHash(arcInt, arcString, alg.hashInt, alg.hashStr); //put elements to 2 hashMap mirror
+        String[] arcStringsNew = alg.hashStr.keySet().toArray(new String[0]);
 
         final String[] pointAll = pointArr(arcString); // all points sorted (Up letters)
         final String[] pointFinalStr = new String[pointAll.length]; //array of real Points with null initial
 
 
-        String[] shortestLength = arcWithPoint(alg.hashFinal, pointAll, pointFinalStr);
+        String[] shortestLength = arcWithPoint(alg.hashFinal, pointAll, pointFinalStr, arcStringsNew);
 
-        minValue(shortestLength, pointFinalStr, alg.hashFinal, alg.hashStr);
+        minValue(shortestLength, pointFinalStr, alg.hashFinal, alg.hashStr, arcStringsNew);
 
 
         System.out.println((Arrays.toString(pointFinalStr)) + "    pointFinalStr");
         System.out.println((alg.hashFinal.get(pointFinalStr[0])) + "   pointFinalStr get from hashFinal");
         System.out.println(Arrays.toString(shortestLength) + "  shortestLength");
 
-
-
-        System.out.println((alg.hashFinal.size()) + "    hashFinal");
+        System.out.println((alg.hashFinal.size()) + " hashFinal " + alg.hashFinal.keySet());
         System.out.println((alg.hashStr.keySet()) + " all arc after dell");
 
+        System.out.println("----------------------------------------------------");
+        System.out.println((alg.hashStr.keySet()) + "  all keys after a (not AA)");
+        Object[] toArrayKeys = alg.hashStr.keySet().toArray();
+        String[] stringsTest = alg.hashStr.keySet().toArray(new String[0]);
+        System.out.println((Arrays.toString(stringsTest) + " test " + stringsTest.length));
+        System.out.println((Arrays.toString(toArrayKeys)) + "   new keys!!!");
+        String[] tttt = Arrays.copyOf(toArrayKeys, toArrayKeys.length, String[].class);
+        System.out.println((Arrays.toString(tttt)) + "   new keys$$$$$$$$$$$$$$$$$");
+
+
+        String[] shortestLength2 = arcWithPoint(alg.hashFinal, pointAll, pointFinalStr, arcStringsNew);
+        System.out.println((Arrays.toString(shortestLength2)) + "   shortestLength2");
+        minValue(shortestLength2, pointFinalStr, alg.hashFinal, alg.hashStr, arcStringsNew);
+        System.out.println("-------------------------------------------------");
+
+        String[] shortestLength3 = arcWithPoint(alg.hashFinal, pointAll, pointFinalStr, arcStringsNew);
+        System.out.println((Arrays.toString(shortestLength3)) + "   shortestLength3");
+        minValue(shortestLength3, pointFinalStr, alg.hashFinal, alg.hashStr, arcStringsNew);
+
+
+        System.out.println("finish");
 
     }
 }
