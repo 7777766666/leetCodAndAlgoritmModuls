@@ -77,6 +77,7 @@ public class Algorithm {
         hashStr.remove(arc);
         finalPoint = finalPointM(finalPoint, point);
         dellArc(arcStr, arc);
+//        delEmptyArrc(finalPoint, )
         return finalPoint;
     }
 
