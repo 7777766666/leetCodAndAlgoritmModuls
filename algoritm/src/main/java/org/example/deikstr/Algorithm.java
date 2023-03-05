@@ -30,7 +30,7 @@ public class Algorithm {
                                         String[] arcStr, String[] finalPoint) {
         String[] tempArc = new String[arcStr.length];   // all arcs, which possible short way
         if (hashFinalPoint.size() == 0) {
-            hashFinalPoint.put(allPoint[0], 2);
+            hashFinalPoint.put(allPoint[0], 0);
             finalPoint[0] = allPoint[0];
         }
         for (int i = 0; i <arcStr.length ; i++) {
@@ -130,7 +130,9 @@ public class Algorithm {
         arcStr = nullDel(arcStr);
         System.out.println("-----------------1-------------------");
 
-
+        String[] arcVariant2 = arcForChose(hashFinalArc, allPoint, arcStr, finalPoint);
+        chooseArc(arcVariant2, finalPoint, algorithm.hashStr, hashFinalArc, arcStr);
+        arcStr = nullDel(arcStr);
 
 
 
