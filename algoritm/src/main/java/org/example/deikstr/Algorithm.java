@@ -1,6 +1,5 @@
 package org.example.deikstr;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Objects;
@@ -10,6 +9,7 @@ public class Algorithm {
     private static final int[] arcIntStart = {10, 5, 3, 100, 2, 0};
     private static final String[] arcStringStart = {"AB", "AD", "BC", "CD", "BD", "AA"};
     HashMap<String, Integer> hashStr = new HashMap<>();
+
     {
         for (int i = 0; i < arcIntStart.length; i++) {
             hashStr.put(arcStringStart[i], arcIntStart[i]);
@@ -28,7 +28,7 @@ public class Algorithm {
 
     private static String[] arcForChose(HashMap<String, Integer> hashFinalPoint, String[] allPoint,
                                         String[] arcStr, String[] finalPoint) {
-        if (hashFinalPoint.size() == allPoint.length){
+        if (hashFinalPoint.size() == allPoint.length) {
             System.out.println("BINGO!!!");
             System.exit(0);
         }
@@ -39,7 +39,7 @@ public class Algorithm {
             finalPoint[0] = allPoint[0];
         }
 
-        for (int i = 0; i <arcStr.length ; i++) {
+        for (int i = 0; i < arcStr.length; i++) {
             for (String str : finalPoint) {
                 if (arcStr[i].contains(str)) {
                     tempArc[i] = arcStr[i];
@@ -52,22 +52,19 @@ public class Algorithm {
     }
 
     private static String[] chooseArc(String[] arcVariant, String[] finalPoint, HashMap<String, Integer> hashStr,
-                                  HashMap<String, Integer> hashFinalArc, String[] arcStr) {
+                                      HashMap<String, Integer> hashFinalArc, String[] arcStr) {
+
         int[] tempArc = new int[arcVariant.length];
         HashMap<Integer, String> hashTemp = new HashMap<>();
         HashMap<String, String> hashTemp2 = new HashMap<>();
-        String[] tempPoint = new String[arcVariant.length];
         for (int i = 0; i < arcVariant.length; i++) {
             for (String point : finalPoint) {
                 if (arcVariant[i].contains(point)) {        //надо исправить что выбрать букву
-
-
                     int length = hashStr.get(arcVariant[i]) + hashFinalArc.get(point);
                     tempArc[i] = length;
-                hashTemp.put(length, arcVariant[i]);
-                point = endPoint(arcVariant[i], point);
-                hashTemp2.put(arcVariant[i], point);
-
+                    hashTemp.put(length, arcVariant[i]);
+                    point = endPoint(arcVariant[i], point);
+                    hashTemp2.put(arcVariant[i], point);
                 }
             }
         }
@@ -88,6 +85,7 @@ public class Algorithm {
                 .min()
                 .getAsInt();
     }
+
     private static void dellArc(String[] arcStr, String arc) {
         for (int i = 0; i < arcStr.length; i++) {
             if (arcStr[i].equals(arc)) {
@@ -96,25 +94,25 @@ public class Algorithm {
         }
     }
 
-
     private static String[] finalPointM(String[] finalPoint, String point) {
-            if (finalPoint[0].equals(point)) {
-                return finalPoint;
-            }else {
-                String[] temp = new String[finalPoint.length + 1];
-                System.arraycopy(finalPoint, 0, temp, 0, finalPoint.length);
-                temp[temp.length - 1] = point;
-                System.out.println((Arrays.toString(temp)) + " temp new finalPoint");
-                return temp;
-            }
+        if (finalPoint[0].equals(point)) {
+            return finalPoint;
+        } else {
+            String[] temp = new String[finalPoint.length + 1];
+            System.arraycopy(finalPoint, 0, temp, 0, finalPoint.length);
+            temp[temp.length - 1] = point;
+            System.out.println((Arrays.toString(temp)) + " temp new finalPoint");
+            return temp;
+        }
     }
-    private static String endPoint(String arcVariant, String point){
+
+    private static String endPoint(String arcVariant, String point) {
         String[] splitArc = arcVariant.split("");
-            if (splitArc[0].equals(point)) {
-                return splitArc[1];
-            }else {
-                return splitArc[0];
-            }
+        if (splitArc[0].equals(point)) {
+            return splitArc[1];
+        } else {
+            return splitArc[0];
+        }
     }
 
     private static String[] nullDel(String[] nullArr) {
@@ -127,14 +125,8 @@ public class Algorithm {
 
     public static void main(String[] args) {
         Algorithm algorithm = new Algorithm();
-        int[] arcInt = arcIntStart;
-        String[] arcStr1 = arcStringStart;
-        String[] arcStr = arcStr1;
-
-
-
+        String[] arcStr = arcStringStart;
         String[] allPoint = allPoints();  // array of all points
-
         HashMap<String, Integer> hashFinalArc = new HashMap<>();    //map for real points
         String[] finalPoint = new String[1];
 
@@ -167,7 +159,7 @@ public class Algorithm {
         System.out.println(((algorithm.hashStr.size())) + "   size hashSTR");
         System.out.println((algorithm.hashStr.keySet()) + "  keys");
         System.out.println((Arrays.toString(finalPoint)) + "  finalPoints");
-        System.out.println((Arrays.toString(arcStr)) + "   arcs final");
+        System.out.println((Arrays.toString(arcStr)) + "   dont use");
         System.out.println((hashFinalArc) + "  way to points from A");
     }
 }
