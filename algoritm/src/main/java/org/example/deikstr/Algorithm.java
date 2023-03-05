@@ -6,8 +6,8 @@ import java.util.Objects;
 
 public class Algorithm {
 
-    private static final int[] arcIntStart = {10, 5, 3, 100, 2, 0};
-    private static final String[] arcStringStart = {"AB", "AD", "BC", "CD", "BD", "AA"};
+    private static final int[] arcIntStart = {10, 5, 3, 100, 2, 0, 15, 15};
+    private static final String[] arcStringStart = {"AB", "AD", "BC", "CD", "BD", "AA", "BF", "CF"};
     HashMap<String, Integer> hashStr = new HashMap<>();
 
     {
@@ -59,7 +59,7 @@ public class Algorithm {
         HashMap<String, String> hashTemp2 = new HashMap<>();
         for (int i = 0; i < arcVariant.length; i++) {
             for (String point : finalPoint) {
-                if (arcVariant[i].contains(point)) {        //надо исправить что выбрать букву
+                if (arcVariant[i].contains(point)) {
                     int length = hashStr.get(arcVariant[i]) + hashFinalArc.get(point);
                     tempArc[i] = length;
                     hashTemp.put(length, arcVariant[i]);
@@ -154,6 +154,13 @@ public class Algorithm {
         arcStr = nullDel(arcStr);
         finalPoint = finalPointNew4;
         System.out.println("-----------------4-------------------");
+
+        String[] arcVariant5 = arcForChose(hashFinalArc, allPoint, arcStr, finalPoint);
+        String[] finalPointNew5 = chooseArc(arcVariant5, finalPoint, algorithm.hashStr, hashFinalArc, arcStr);
+        arcStr = nullDel(arcStr);
+        finalPoint = finalPointNew5;
+        System.out.println("-----------------5-------------------");
+
 
 
         System.out.println(((algorithm.hashStr.size())) + "   size hashSTR");
