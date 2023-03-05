@@ -28,11 +28,17 @@ public class Algorithm {
 
     private static String[] arcForChose(HashMap<String, Integer> hashFinalPoint, String[] allPoint,
                                         String[] arcStr, String[] finalPoint) {
+        if (hashFinalPoint.size() == allPoint.length){
+            System.out.println("BINGO!!!");
+            System.exit(0);
+        }
+
         String[] tempArc = new String[arcStr.length];   // all arcs, which possible short way
         if (hashFinalPoint.size() == 0) {
             hashFinalPoint.put(allPoint[0], 0);
             finalPoint[0] = allPoint[0];
         }
+
         for (int i = 0; i <arcStr.length ; i++) {
             for (String str : finalPoint) {
                 if (arcStr[i].contains(str)) {
@@ -144,10 +150,18 @@ public class Algorithm {
         arcStr = nullDel(arcStr);
         finalPoint = finalPointNew;
         System.out.println("-----------------2-------------------");
+
         String[] arcVariant3 = arcForChose(hashFinalArc, allPoint, arcStr, finalPoint);
         String[] finalPointNew3 = chooseArc(arcVariant3, finalPoint, algorithm.hashStr, hashFinalArc, arcStr);
         arcStr = nullDel(arcStr);
         finalPoint = finalPointNew3;
+        System.out.println("-----------------3-------------------");
+
+        String[] arcVariant4 = arcForChose(hashFinalArc, allPoint, arcStr, finalPoint);
+        String[] finalPointNew4 = chooseArc(arcVariant4, finalPoint, algorithm.hashStr, hashFinalArc, arcStr);
+        arcStr = nullDel(arcStr);
+        finalPoint = finalPointNew4;
+        System.out.println("-----------------4-------------------");
 
 
         System.out.println(((algorithm.hashStr.size())) + "   size hashSTR");
