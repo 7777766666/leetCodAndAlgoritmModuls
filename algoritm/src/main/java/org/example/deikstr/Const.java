@@ -1,2 +1,7 @@
-package org.example.deikstr;public enum Const {
+package org.example.deikstr;
+
+public enum Const {
+
+
+
 }
