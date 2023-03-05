@@ -1,5 +1,6 @@
 package org.example.deikstr;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Objects;
@@ -67,6 +68,9 @@ public class Algorithm {
         System.out.println(point + " mem");
         System.out.println(arc + " mem");
         hashFinalArc.put(point, minFind);
+        hashStr.remove(arc);
+        finalPoint = finalPointM(finalPoint, point);
+
         dellArc(arcStr, arc);
     }
 
@@ -81,6 +85,21 @@ public class Algorithm {
                 arcStr[i] = null;
             }
         }
+    }
+
+
+    private static String[] finalPointM(String[] finalPoint, String point) {
+            if (finalPoint[0].equals(point)) {
+                return finalPoint;
+            }else {
+                String[] temp = new String[finalPoint.length + 1];
+                System.arraycopy(finalPoint, 0, temp, 0, finalPoint.length);
+                temp[temp.length - 1] = point;
+                System.out.println((Arrays.toString(temp)) + " temp new finalPoint");
+                return temp;
+            }
+
+
     }
 
     private static String[] nullDel(String[] nullArr) {
@@ -109,6 +128,9 @@ public class Algorithm {
 
         chooseArc(arcVariant, finalPoint, algorithm.hashStr, hashFinalArc, arcStr);
         arcStr = nullDel(arcStr);
+        System.out.println("-----------------1-------------------");
+
+
 
 
 
