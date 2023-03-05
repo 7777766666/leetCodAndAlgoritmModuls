@@ -45,7 +45,7 @@ public class Algorithm {
         return tempArc;
     }
 
-    private static void chooseArc(String[] arcVariant, String[] finalPoint, HashMap<String, Integer> hashStr,
+    private static String[] chooseArc(String[] arcVariant, String[] finalPoint, HashMap<String, Integer> hashStr,
                                   HashMap<String, Integer> hashFinalArc, String[] arcStr) {
         int[] tempArc = new int[arcVariant.length];
         HashMap<Integer, String> hashTemp = new HashMap<>();
@@ -53,10 +53,13 @@ public class Algorithm {
         String[] tempPoint = new String[arcVariant.length];
         for (int i = 0; i < arcVariant.length; i++) {
             for (String point : finalPoint) {
-                if (arcVariant[i].contains(point)) {
+                if (arcVariant[i].contains(point)) {        //надо исправить что выбрать букву
+
+
                     int length = hashStr.get(arcVariant[i]) + hashFinalArc.get(point);
                     tempArc[i] = length;
                 hashTemp.put(length, arcVariant[i]);
+                point = endPoint(arcVariant[i], point);
                 hashTemp2.put(arcVariant[i], point);
 
                 }
@@ -70,8 +73,8 @@ public class Algorithm {
         hashFinalArc.put(point, minFind);
         hashStr.remove(arc);
         finalPoint = finalPointM(finalPoint, point);
-
         dellArc(arcStr, arc);
+        return finalPoint;
     }
 
     private static int minFind(int[] pointLength) {
@@ -98,8 +101,14 @@ public class Algorithm {
                 System.out.println((Arrays.toString(temp)) + " temp new finalPoint");
                 return temp;
             }
-
-
+    }
+    private static String endPoint(String arcVariant, String point){
+        String[] splitArc = arcVariant.split("");
+            if (splitArc[0].equals(point)) {
+                return splitArc[1];
+            }else {
+                return splitArc[0];
+            }
     }
 
     private static String[] nullDel(String[] nullArr) {
@@ -131,14 +140,20 @@ public class Algorithm {
         System.out.println("-----------------1-------------------");
 
         String[] arcVariant2 = arcForChose(hashFinalArc, allPoint, arcStr, finalPoint);
-        chooseArc(arcVariant2, finalPoint, algorithm.hashStr, hashFinalArc, arcStr);
+        String[] finalPointNew = chooseArc(arcVariant2, finalPoint, algorithm.hashStr, hashFinalArc, arcStr);
         arcStr = nullDel(arcStr);
-
+        finalPoint = finalPointNew;
+        System.out.println("-----------------2-------------------");
+        String[] arcVariant3 = arcForChose(hashFinalArc, allPoint, arcStr, finalPoint);
+        String[] finalPointNew3 = chooseArc(arcVariant3, finalPoint, algorithm.hashStr, hashFinalArc, arcStr);
+        arcStr = nullDel(arcStr);
+        finalPoint = finalPointNew3;
 
 
         System.out.println(((algorithm.hashStr.size())) + "   size hashSTR");
         System.out.println((algorithm.hashStr.keySet()) + "  keys");
         System.out.println((Arrays.toString(finalPoint)) + "  finalPoints");
         System.out.println((Arrays.toString(arcStr)) + "   arcs final");
+        System.out.println((hashFinalArc) + "  way to points from A");
     }
 }
