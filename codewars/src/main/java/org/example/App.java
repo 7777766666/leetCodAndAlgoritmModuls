@@ -7,8 +7,8 @@ import org.example.day1.ReturnPhoneNumber;
 public class App{
         public static void main( String[] args ) {
 
-            String big = "sadbutsad";
-            String small = "sad";
+            String big = "mississippi";
+            String small = "issip";
             FindStringInString findStringInString = new FindStringInString();
             System.out.println(findStringInString.strStr(big, small));
 
