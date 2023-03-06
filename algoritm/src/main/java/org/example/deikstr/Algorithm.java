@@ -94,6 +94,22 @@ public class Algorithm {
             }
         }
     }
+//    private static void dellArc(String[] arcStr, String arc, HashMap<String, Integer> hashStr, String[] finalPoint) {
+//        for (int i = 0; i < arcStr.length; i++) {
+//            int count = 0;
+//            for (int j = 0; j < finalPoint.length; j++) {
+//                if (arcStr[i].contains(finalPoint[j])) {
+//                    count++;
+//                    if (count == 2) {
+//                        hashStr.remove(arcStr[i]);
+//
+//                        System.out.println( arcStr[i] +  "  dellArc Удалил лишнее ребро");
+//                    }
+//                }
+//            }
+//
+//        }
+//    }
 
     private static String[] finalPointM(String[] finalPoint, String point) {
         if (finalPoint[0].equals(point)) {
