@@ -7,10 +7,15 @@ import org.example.day1.ReturnPhoneNumber;
 public class App{
         public static void main( String[] args ) {
 
-            String big = "leetcode";
-            String small = "leeto";
+            String big = "sadbutsad";
+            String small = "sad";
             FindStringInString findStringInString = new FindStringInString();
             System.out.println(findStringInString.strStr(big, small));
+
+int r = 2_147_483_647;
+int r1 = 2_147_483_647;
+int r2 = 2;
+//            System.out.println(r+r1+11117);
 
 
 
@@ -20,6 +25,6 @@ public class App{
 
 
 
-
     }
+
 }

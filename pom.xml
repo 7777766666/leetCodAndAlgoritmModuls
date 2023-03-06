@@ -13,6 +13,7 @@
     <module>algoritm</module>
     <module>LeetCode</module>
       <module>codewars</module>
+      <module>garbageCollector</module>
   </modules>
 
   <properties>

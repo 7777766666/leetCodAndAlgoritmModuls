@@ -1,72 +1,38 @@
 package org.example.day1;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.HashMap;
 
 public class FindStringInString {
 
+
     public int strStr(String haystack, String needle) {
+//        String haystack1 = "sadbutsad";
+//
+//        String needle1 = "sad";
 
-        String[] a = haystack.split("");
-        String[] b = needle.split("");
 
-        for (int i = 0; i < a.length; i++) {
-            for (int j = 0; j < b.length; j++) {
-                if (a[i].equals(b[j])) {
-                    for (int k = 1; k < needle.length(); k++) {
+        byte[] bytes = haystack.getBytes(StandardCharsets.US_ASCII);
+        byte[] bytes1 = needle.getBytes(StandardCharsets.US_ASCII);
+        int[] empty = new int[1];
 
-                            a[i + k].equals(b[j + 1]);
+        for (int i = 0; i < bytes.length; i++) {
+            if (bytes1[0] == bytes[i]) {
+                empty[0] = i;
 
-                    }
-                    return i;
+
+                for (int j = 1; j < bytes1.length; j++) {
+                   if (bytes1[j] == bytes[++i]  ) {
+
+                       if (j == bytes1.length - 1){
+                           int index = empty[0];
+                           return index;
+                       }
+                   }
                 }
             }
-
         }
         return -1;
     }
-
 }
-
-
-//        String[] a = {haystack};
-//        String[] b = {needle};
-//
-//        String[] c = haystack.split(needle);
-//        System.out.println((Arrays.toString(c)) + " c");
-//        System.out.println(haystack.length() );
-//        System.out.println((c.length) + "  c.length");
-//        if (haystack.length() == c.length) {
-//            return -1;
-//        } else {
-//            return c[0].length();
-//        }
-
-
-//        String[] d = haystack.split("");
-//
-//        int length = c[0].length();
-//        System.out.println(length + "   !!!!!!!!!!!!!!");
-//
-//
-//        String[] b = {needle};
-//        String[] f = needle.split("");
-//        System.out.println((needle.length()));
-//        System.out.println((haystack.length()));
-//        String[] a = {haystack};
-//        System.out.println((Arrays.toString(a)) + " a");
-//        System.out.println((Arrays.toString(c)) + "  c");
-//        System.out.println(((haystack.length())) + "  haystack");
-//
-//        if (a[0].contains(b[0])) {
-//
-//            for (int i = 0; i < c.length; i++){
-////                if (c[i] == null) {
-////                    return i;
-//
-//            }
-//        }
-//
-//
-//        return -1;
-
