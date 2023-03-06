@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="algoritm" />
         <module name="LeetCode" />
+        <module name="codewars" />
       </profile>
     </annotationProcessing>
   </component>

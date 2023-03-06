@@ -12,6 +12,7 @@
   <modules>
     <module>algoritm</module>
     <module>LeetCode</module>
+      <module>codewars</module>
   </modules>
 
   <properties>
