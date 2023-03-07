@@ -1,6 +1,6 @@
-package org.example.day1;
+package org.example.day3ArraysCheck;
 
-public class SplitFind {
+public class ArrCheck {
 
     public int strStr(String haystack, String needle) {
         String[] test = haystack.split(needle); //если длина массива ноль, значит совпадение 100%
