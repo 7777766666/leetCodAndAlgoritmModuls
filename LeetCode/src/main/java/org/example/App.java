@@ -1,11 +1,11 @@
 package org.example;
 
 
+import org.example.day2.FindPart;
 import org.example.day3ArraysCheck.ArrCheck;
 import org.example.modulOne.dayOne.Second;
 import org.example.third.One;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
@@ -34,6 +34,12 @@ public class App {
         String small = "issip";
         ArrCheck arrCheck = new ArrCheck();
         System.out.println(arrCheck.strStr(big, small) + "  ответ на вхождение строки в строку (-1 нет), номер");
+
+
+        String part1 = "ahbgdc";
+        String part2 = "abc";
+        FindPart findPart = new FindPart(part1, part2);
+        System.out.println((findPart.findPart(part1, part2)) + "   findPart");
 
 
     }
