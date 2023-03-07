@@ -1,23 +1,8 @@
 package org.example.day1;
 
-import java.util.Arrays;
-
 public class SplitFind {
 
     public int strStr(String haystack, String needle) {
-
-        byte[] a = haystack.getBytes();
-        byte[] b = needle.getBytes();
-
-
-        System.out.println(Arrays.toString(a) +  " arr a");
-//        System.out.println(Arrays.toString(b) +  " arr b");
-
-        int[] startPoint = startPoint(a, b);
-        System.out.println(Arrays.toString(startPoint) + "  startPoint");
-
-        int[] startOnly = dellNull(startPoint);
-        System.out.println(Arrays.toString(startOnly) + "  startOnly");
 
         if (haystack.length() < needle.length()) {
             return -1;
@@ -29,11 +14,6 @@ public class SplitFind {
         if ( diff(haystack, test) == -1) {  // different, because have not changed after split
             return -1;
         }
-        System.out.println(Arrays.toString(test) + "  test " + (test[0].length()));
-
-
-
-
         return test[0].length();
     }
     public int[] startPoint(byte[] big, byte[] small) {
@@ -46,11 +26,6 @@ public class SplitFind {
         return temp;
     }
 
-    public int[] dellNull(int[] arrWithNull) {
-        return Arrays.stream(arrWithNull)
-                .filter(x -> (x != 0))
-                .toArray();
-    }
     public int equalsArr(String[] test) {  //если длина массива ноль, значит совпадение 100%
         if (test.length == 0) {
             return 0;
