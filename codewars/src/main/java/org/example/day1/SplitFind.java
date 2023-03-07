@@ -16,15 +16,6 @@ public class SplitFind {
         }
         return test[0].length();
     }
-    public int[] startPoint(byte[] big, byte[] small) {
-        int [] temp = new int[big.length];
-        for (int i = 0; i < big.length; i++) {
-            if (small[0] == big[i]) {
-                temp[i] = i;
-            }
-        }
-        return temp;
-    }
 
     public int equalsArr(String[] test) {  //если длина массива ноль, значит совпадение 100%
         if (test.length == 0) {
@@ -35,13 +26,9 @@ public class SplitFind {
 
     public int diff(String y, String[] x) {
         String[] inOne = {y};
-
         if (x[0].equals(inOne[0])) {
-
-            System.out.println(" dont split");
             return -1;
         }
         return 555;
     }
-
 }
