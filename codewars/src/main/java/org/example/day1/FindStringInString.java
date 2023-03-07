@@ -9,15 +9,6 @@ public class FindStringInString {
 
     public int strStr(String haystack, String needle) {
 
-
-        //        String haystack1 = "sadbutsad";
-//
-//        String needle1 = "sad";
-
-
-
-
-
         String[] a = haystack.split(needle);
         if (a.length == 0) {
             return 0;
@@ -39,6 +30,8 @@ public class FindStringInString {
             }
         }
 
+
+
         for (int i = 0; i < bytes.length - bytes1.length; i++) {
             if (bytes1[0] == bytes[i]) {
                 empty[0] = i;
@@ -54,7 +47,7 @@ public class FindStringInString {
                        if (j == bytes1.length - 1){
                            int index = empty[0];
                            return index;
-                       } 
+                       }
                    }
                 }
             }
