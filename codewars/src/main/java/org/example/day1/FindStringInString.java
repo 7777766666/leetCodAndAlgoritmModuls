@@ -1,8 +1,6 @@
 package org.example.day1;
 
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.HashMap;
 
 public class FindStringInString {
 

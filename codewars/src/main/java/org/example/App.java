@@ -1,17 +1,17 @@
 package org.example;
 
-import org.example.day1.FindStringInString;
-import org.example.day1.ReturnPhone;
-import org.example.day1.ReturnPhoneNumber;
 import org.example.day1.SplitFind;
 
 public class App{
         public static void main( String[] args ) {
 
-            String big = "mississippi";
-            String small = "issip";
+//            String big = "9issippi777";
+            String big = "hello";
+//            String big = "issip";
+//            String small = "issip";
+            String small = "ll";
             SplitFind splitFind = new SplitFind();
-            System.out.println(splitFind.strStr(big, small));
+            System.out.println((splitFind.strStr(big, small)) + "  ответ который вернулся");
 
 
 
