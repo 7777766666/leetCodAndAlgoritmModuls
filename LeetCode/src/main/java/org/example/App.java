@@ -15,29 +15,28 @@ public class App {
 
     public static void main(String[] args) {
 
-        String s = "lol";
-        String t = "mem";
-        One one = new One();
-        int[] mem2 = one.mem(s, t);
-        System.out.println(Arrays.toString(mem2) + " mem2");
-        One two = new One();
+//        String s = "lol";
+//        String t = "mem";
+//        One one = new One();
+//        int[] mem2 = one.mem(s, t);
+//        System.out.println(Arrays.toString(mem2) + " mem2");
+//        One two = new One();
+//
+//
+//
+//
+//        int[] nums = {-1, -1, 100, -1, -1};
+//        Second second = new Second();
+//        int lol = second.lol(nums);
+//        System.out.println(lol + " вторая задача первого урока. ответ элемент с индексом массива 2");
+//
+//        String big = "9issippi777";
+//        String small = "issip";
+//        ArrCheck arrCheck = new ArrCheck();
+//        System.out.println(arrCheck.strStr(big, small) + "  ответ на вхождение строки в строку (-1 нет), номер");
 
-
-
-
-        int[] nums = {-1, -1, 100, -1, -1};
-        Second second = new Second();
-        int lol = second.lol(nums);
-        System.out.println(lol + " вторая задача первого урока. ответ элемент с индексом массива 2");
-
-        String big = "9issippi777";
-        String small = "issip";
-        ArrCheck arrCheck = new ArrCheck();
-        System.out.println(arrCheck.strStr(big, small) + "  ответ на вхождение строки в строку (-1 нет), номер");
-
-
-        String part1 = "ahbgdc";
         String part2 = "abc";
+        String part1 = "ahbgdc";
         FindPart findPart = new FindPart(part1, part2);
         System.out.println((findPart.findPart(part1, part2)) + "   findPart");
 
