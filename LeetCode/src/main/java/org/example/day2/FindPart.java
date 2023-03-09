@@ -15,46 +15,53 @@ public class FindPart {
 
     public boolean findPart(String s, String t) {
 
-        String[] a = s.split("");
-        String[] b = t.split("");
+        int[] a = stringToArrInt(t);
+        int[] b = stringToArrInt(s);
 
+        System.out.println((Arrays.toString(a)) +  "  long Arr a ");
+        System.out.println((Arrays.toString(b)) + "   long Arr b");
+
+
+        if (s.length() == 0){
+            return true;
+        }
+        if (s.length() == 1 && t.contains(s) && t.length() > 1) {
+            return true;
+        }
 
         boolean xxx = false;
 
-        if (s.length() <= t.length()) {
-            return false;
-        }
-        String[] start = lengthInside(a, b);
 
-        if (start.length <= b.length) {  //if length beetwin first and last < b.length +1
+        if (s.length() >= t.length()) {
             return false;
         }
-        String[] first = first(start, b);  //only letters from first Sting contain second string
-        String[] dellNull = dellNull(first);
+        int[] start = lengthInside(a, b);
+
+        if (start.length <= b.length) {  //if length between first and last < b.length +1
+            return false;
+        }
+        int[] first = first(start, b);  //only letters from first Sting contain second string
+        int[] dellNull = dellNull(first);
+
+
         System.out.println((Arrays.toString(dellNull)) + "   dellNull");
 
 
-        String toStringArr = toStringArr(dellNull);
-        System.out.println(toStringArr);
-        if (t.contains(toStringArr)){
-            System.out.println("##########################################");
-            xxx = true;
-            return xxx;
-        }
+        System.out.println((Arrays.toString(dellNull)) + "   dellnull");
 
 
 
-        return xxx;
+return false;
     }
 
-    public String[] lengthInside(String[] a, String[] b) {  //все значения крайних элементов, можно изменить
-        String[] startDell = new String[a.length];
+    public int[] lengthInside(int[] a, int [] b) {  //все значения крайних элементов, можно изменить
+        int[] startDell = new int [a.length];
         int i = 0, j = 0;
         for (i = 0; i < a.length; i++) {
-            if (a[i].equals(b[0])) {
+            if (a[i] == b[0]) {
                 startDell[i] = a[i];
                 for (j = a.length - 1; j >= 0; j--) {
-                    if (a[j].equals(b[b.length - 1])) {
+                    if (a[j] == b[b.length - 1]) {
                         startDell[j] = a[j];
                         break;
                     }
@@ -62,17 +69,23 @@ public class FindPart {
                 break;
             }
         }
-        String[] start = new String[j - i + 1];
+        int [] start = new int [j - i + 1];
         System.arraycopy(a, i, start, 0, j - i + 1);
         System.out.println((Arrays.toString(start)) + "   lengthInside start");
+        if (start.length <= b.length && j+1 == a.length){
+            System.out.println("ШЕФ ВСЕ ПРОПАЛО!!!!!!!!!!");
+            return new int[1];
+        }
+
+
         return start;
     }
 
-    public String[] first(String[] start, String[] x) {
-        String[] first = new String[start.length];
+    public int[] first(int[] start, int[] x) {
+        int[] first = new int[start.length];
         for (int i = 0; i < start.length; i++) {
             for (int j = 0; j < x.length; j++) {
-                if (start[i].equals(x[j])) {
+                if (start[i] == x[j]) {
                     first[i] = start[i];
                 }
             }
@@ -81,21 +94,21 @@ public class FindPart {
         return first;
     }
 
-    public String[] dellNull(String[] dell) {
+    public int[] dellNull(int[] dell) {
         return Arrays.stream(dell)
                 .filter(Objects::nonNull)
-                .toArray(String[]:: new);
+                .toArray();
     }
-    public String toStringArr(String[] x) {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < x.length; i++) {
-            stringBuilder.append(x[i]);
+
+    private int[] stringToArrInt(String x) {
+        byte[] aaa = x.getBytes();
+        int[] a = new int[aaa.length];
+        for (int i = 0; i < a.length; i++) {
+            a[i] = (int) aaa[i];
         }
-        return stringBuilder.toString();
+        return a;
+
     }
-
-
-
 
 }
 
