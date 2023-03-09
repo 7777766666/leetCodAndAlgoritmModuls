@@ -2,6 +2,7 @@ package org.example;
 
 
 import org.example.day2.FindPart;
+import org.example.day2.FindPartNotMy;
 import org.example.day3ArraysCheck.ArrCheck;
 import org.example.modulOne.dayOne.Second;
 import org.example.third.One;
@@ -40,6 +41,10 @@ public class App {
         String part1 = "abc";
         FindPart findPart = new FindPart(part1, part2);
         System.out.println((findPart.findPart(part1, part2)) + "   findPart");
+        FindPartNotMy findPartNotMy = new FindPartNotMy();
+        findPartNotMy.isSubsequence(part1, part2);
+        System.out.println(findPartNotMy + " find not my");
+
 
 
     }
