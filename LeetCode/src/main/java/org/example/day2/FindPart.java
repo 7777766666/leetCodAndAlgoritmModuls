@@ -37,7 +37,7 @@ public class FindPart {
         }
         int[] start = lengthInside(a, b);
 
-        if (start.length <= b.length) {  //if length between first and last < b.length +1
+        if (start.length < b.length) {  //if length between first and last < b.length +1
             return false;
         }
         int[] first = first(start, b);  //only letters from first Sting contain second string
@@ -45,7 +45,32 @@ public class FindPart {
 
 
         System.out.println((Arrays.toString(dellNull)) + "   dellNull");
+        StringBuilder stringBuilder = new StringBuilder();
+        int[] check = finalResult(b, dellNull);
+        for (int i = 0; i < check.length; i++) {
+            
+        }
 
+        for (int i = 0; i < check.length; i++) {
+            stringBuilder.append(((char) check[i]));
+        }
+        String final777 = stringBuilder.toString();
+        System.out.println(final777 + "   $$$$$$$$$$$$$$$$$$$$$$");
+
+
+
+
+
+//        System.out.println((Arrays.toString(check)) + "    check");
+//        int count = 0;
+//        for (int i = 0; i < b.length; i++) {
+//            if (b[i] == check[i]){
+//                count++;
+//                if (count == b.length - 1) {
+//                    return true;
+//                }
+//            }
+//        }
 
         System.out.println((Arrays.toString(dellNull)) + "   dellnull");
 
@@ -72,7 +97,7 @@ return false;
         int [] start = new int [j - i + 1];
         System.arraycopy(a, i, start, 0, j - i + 1);
         System.out.println((Arrays.toString(start)) + "   lengthInside start");
-        if (start.length <= b.length && j+1 == a.length){
+        if (start.length < b.length && j+1 == a.length){
             System.out.println("ШЕФ ВСЕ ПРОПАЛО!!!!!!!!!!");
             return new int[1];
         }
@@ -109,6 +134,19 @@ return false;
         return a;
 
     }
+    private int[] finalResult(int[] start, int[] check) {
+        int[] afterCheck = new int[check.length];
+        for (int i = 0; i < start.length; i++) {
+            for (int j = 0; j < check.length; j++) {
+                if (check[j] == start[i] && check[j] != 0 ) {
+                    afterCheck[i] = check[j];
+
+                }
+            }
+        }
+        return afterCheck;
+    }
+
 
 }
 
