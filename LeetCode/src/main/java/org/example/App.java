@@ -37,7 +37,7 @@ public class App {
 
 
         String part2 = "ahbgdc";
-        String part1 = "axc";
+        String part1 = "abc";
         FindPart findPart = new FindPart(part1, part2);
         System.out.println((findPart.findPart(part1, part2)) + "   findPart");
 
