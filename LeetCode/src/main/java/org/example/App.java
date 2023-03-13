@@ -5,6 +5,7 @@ import org.example.Day3.ListNode;
 import org.example.Day3.ReverseLinkedList;
 import org.example.day2.FindPart;
 import org.example.day2.FindPartNotMy;
+import org.example.day2.Isomorphic205Strings;
 import org.example.day3ArraysCheck.ArrCheck;
 import org.example.modulOne.dayOne.Second;
 import org.example.third.One;
@@ -47,7 +48,10 @@ public class App {
 
 //        ListNode.reverseList(head);
 
-
+        String a = "paper";
+        String b = "title";
+        Isomorphic205Strings isomorphic205Strings = new Isomorphic205Strings(a, b);
+//        System.out.println(Isomorphic205Strings.isIsomorphic(a, b));
 
 
     }
