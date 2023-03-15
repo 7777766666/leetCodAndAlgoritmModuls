@@ -12,10 +12,32 @@ public class App {
 
     public static void main(String[] args) {
 
+//        ListNode2 a3 = new ListNode2(4, null);
+//        ListNode2 a2 = new ListNode2(2, a3);
+//        ListNode2 a1 = new ListNode2(1, a2);
+//        ListNode2 list1 = a1;
+//        ListNode2 b3 = new ListNode2(4, null);
+//        ListNode2 b2 = new ListNode2(3, b3);
+//        ListNode2 b1 = new ListNode2(1, b2);
+//        ListNode2 list2 = b1;
 
-        ListNode2 list1 = new ListNode2();
 
+        ListNode2 a2 = new ListNode2(3, null);
+        ListNode2 a1 = new ListNode2(-9, a2);
+        ListNode2 list1 = a1;
 
+        ListNode2 b2 = new ListNode2(7, null);
+        ListNode2 b1 = new ListNode2(5, b2);
+        ListNode2 list2 = b1;
+
+        ListNode2 node2 = ListNode2.mergeTwoLists(list1, list2);
+        int w = 1;
+        while (node2 != null) {
+
+            System.out.println(node2.val + "  element " + w);
+            node2 = node2.next;
+            w++;
+        }
 
 
 //        int[] numbers = {6, -99, 986};
@@ -45,7 +67,7 @@ public class App {
 
         String a = "paper";
         String b = "title";
-        Isomorphic205Strings isomorphic205Strings = new Isomorphic205Strings(a, b);
+//        Isomorphic205Strings isomorphic205Strings = new Isomorphic205Strings(a, b);
 //        System.out.println(Isomorphic205Strings.isIsomorphic(a, b));
 
 
