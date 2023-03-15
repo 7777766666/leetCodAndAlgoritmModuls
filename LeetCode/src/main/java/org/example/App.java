@@ -2,18 +2,8 @@ package org.example;
 
 
 import org.example.Day3.ListNode;
-import org.example.Day3.ReverseLinkedList;
-import org.example.day2.FindPart;
-import org.example.day2.FindPartNotMy;
 import org.example.day2.Isomorphic205Strings;
-import org.example.day3ArraysCheck.ArrCheck;
-import org.example.modulOne.dayOne.Second;
-import org.example.third.One;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import org.example.day4.ListNode2;
 
 /**
  * Hello world!
@@ -21,6 +11,11 @@ import java.util.List;
 public class App {
 
     public static void main(String[] args) {
+
+
+        ListNode2 list1 = new ListNode2();
+
+
 
 
 //        int[] numbers = {6, -99, 986};
