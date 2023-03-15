@@ -11,13 +11,17 @@ public class App {
 
     public static void main(String[] args) {
 
-        ListNode a3 = new ListNode(4, null);
-        ListNode a2 = new ListNode(2, a3);
-        ListNode a1 = new ListNode(1, a2);
+
+        ListNode a2 = new ListNode(5, null);
+        ListNode a1 = new ListNode(-2, a2);
         ListNode list1 = a1;
-        ListNode b3 = new ListNode(4, null);
-        ListNode b2 = new ListNode(3, b3);
-        ListNode b1 = new ListNode(1, b2);
+
+        ListNode b6 = new ListNode(6, null);
+        ListNode b5 = new ListNode(1, b6);
+        ListNode b4 = new ListNode(-1, b5);
+        ListNode b3 = new ListNode(-3, b4);
+        ListNode b2 = new ListNode(-6, b3);
+        ListNode b1 = new ListNode(-9, b2);
         ListNode list2 = b1;
 
 

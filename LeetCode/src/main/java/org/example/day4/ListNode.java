@@ -19,6 +19,7 @@ public class ListNode {
 
     }
 
+
     public static ListNode mergeTwoLists(ListNode list1, ListNode list2) {
 
         if (list1 == null && list2 == null) {
@@ -95,15 +96,9 @@ public class ListNode {
                     return node;
                 }
 
-
-//                System.out.println(current.val + " <-current2 " + a.val + " <-a " + b.val + " <-b");
             }
-//        if (a.val < b.val) {
-//            a.next = b;
-//        } else {
-//            b.next = a;
-//        }
-
+//  -2, 5
+//  -9,-6,-3,-1,1,6
 
         }
         return node;
