@@ -1,9 +1,8 @@
 package org.example;
 
 
-import org.example.Day3.ListNode;
-import org.example.day2.Isomorphic205Strings;
-import org.example.day4.ListNode2;
+import org.example.Day3.ListNode4;
+import org.example.day4.ListNode;
 
 /**
  * Hello world!
@@ -12,25 +11,25 @@ public class App {
 
     public static void main(String[] args) {
 
-//        ListNode2 a3 = new ListNode2(4, null);
-//        ListNode2 a2 = new ListNode2(2, a3);
-//        ListNode2 a1 = new ListNode2(1, a2);
-//        ListNode2 list1 = a1;
-//        ListNode2 b3 = new ListNode2(4, null);
-//        ListNode2 b2 = new ListNode2(3, b3);
-//        ListNode2 b1 = new ListNode2(1, b2);
-//        ListNode2 list2 = b1;
+        ListNode a3 = new ListNode(4, null);
+        ListNode a2 = new ListNode(2, a3);
+        ListNode a1 = new ListNode(1, a2);
+        ListNode list1 = a1;
+        ListNode b3 = new ListNode(4, null);
+        ListNode b2 = new ListNode(3, b3);
+        ListNode b1 = new ListNode(1, b2);
+        ListNode list2 = b1;
 
 
-        ListNode2 a2 = new ListNode2(3, null);
-        ListNode2 a1 = new ListNode2(-9, a2);
-        ListNode2 list1 = a1;
+//       ListNode a2 = new ListNode(3, null);
+//        ListNode a1 = new ListNode(-9, a2);
+//        ListNode list1 = a1;
+//
+//        ListNode b2 = new ListNode(7, null);
+//        ListNode b1 = new ListNode(5, b2);
+//        ListNode list2 = b1;
 
-        ListNode2 b2 = new ListNode2(7, null);
-        ListNode2 b1 = new ListNode2(5, b2);
-        ListNode2 list2 = b1;
-
-        ListNode2 node2 = ListNode2.mergeTwoLists(list1, list2);
+        ListNode node2 = ListNode.mergeTwoLists(list1, list2);
         int w = 1;
         while (node2 != null) {
 
@@ -56,11 +55,11 @@ public class App {
 //    }
 
 
-        ListNode next5 = new ListNode(5, null);
-        ListNode next4 = new ListNode(4, next5);
-        ListNode next3 = new ListNode(3, next4);
-        ListNode next2 = new ListNode(2, next3);
-        ListNode head = new ListNode(1, next2);
+        ListNode4 next5 = new ListNode4(5, null);
+        ListNode4 next4 = new ListNode4(4, next5);
+        ListNode4 next3 = new ListNode4(3, next4);
+        ListNode4 next2 = new ListNode4(2, next3);
+        ListNode4 head = new ListNode4(1, next2);
 
 
 //        ListNode.reverseList(head);

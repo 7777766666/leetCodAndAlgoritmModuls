@@ -1,25 +1,23 @@
 package org.example.Day3;
 
-import java.math.BigInteger;
-
-public class ListNode {
+public class ListNode4 {
     int val;
-    ListNode next;
-    public ListNode() {
+    ListNode4 next;
+    public ListNode4() {
     }
-    public ListNode(int val) {
+    public ListNode4(int val) {
         this.val = val;
     }
-    public ListNode(int val, ListNode next) {
+    public ListNode4(int val, ListNode4 next) {
         this.val = val;
         this.next = next;
     }
 
 
-    public static void reverseList(ListNode head) {
+    public static void reverseList(ListNode4 head) {
 
-        ListNode  left= null;
-        ListNode right = head;
+        ListNode4 left= null;
+        ListNode4 right = head;
 
 
         System.out.println(head.val);
@@ -31,7 +29,7 @@ int w = 0;
         while (right.next != null){
 w++;
 
-            ListNode next = right.next;     //сохраняем адрес первой ноды (некст поле только)
+            ListNode4 next = right.next;     //сохраняем адрес первой ноды (некст поле только)
 
                 right.next = left;
 
