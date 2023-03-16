@@ -41,37 +41,54 @@ public class ListNode {
             }
         }
 
+
         ListNode a = list1;
         ListNode b = list2;
         ListNode current = null;
         ListNode next = null;
         ListNode node = null;
 
+        if (a.next == null || b.next == null) {
+            if (a.val < b.val) {
+                node = a;
+                if (a.next == null) {
+                    a.next = b;
+                    return node;
+                }
+            } else {
+                node = b;
+                if (b.next == null) {
+                    b.next = a;
+                    return node;
+                }
+            }
+        }
+
+
         if (a.val < b.val) {
             node = a;
             current = a;
-            next = current.next;
             a = current.next;
         } else {
             node = b;
             current = b;
-            next = current.next;
             b = current.next;
         }
 
-        System.out.println(current.val + " <-current1 " + a.val + " <-a " + b.val + " <-b");
+
+//        System.out.println(current.val + " <-current1 " + a.val + " <-a " + b.val + " <-b");
 
         //check 1
-        while (a.next != null || b.next != null) {
+        while (a.next != null || b.next != null || current.next != null) {
 
             if (a.val < b.val) {
                 if (a.next != null) {
                     current.next = a;   //указать на head, а не второй элемент списка!!!!!
                     current = a;
-                    next = current;
                     a = current.next;
                 } else {
                     current.next = a;
+
                     a.next = b;
                     return node;
                 }
@@ -83,7 +100,6 @@ public class ListNode {
                 if (b.next != null) {
                     current.next = b;   //указать на head, а не второй элемент списка!!!!!
                     current = b;
-                    next = current;
                     b = current.next;
                 } else {
                     current.next = b;
@@ -91,14 +107,14 @@ public class ListNode {
                     return node;
                 }
 
-                if (a.val < b.val && a.next == null && b.next == null ) {
-                    a.next = b;
-                    return node;
-                }
-                if (a.val >= b.val && a.next == null && b.next == null ) {
-                    a.next = b;
-                    return node;
-                }
+//                if (a.val < b.val && a.next == null && b.next == null ) {
+//                    a.next = b;
+//                    return node;
+//                }
+//                if (a.val >= b.val && a.next == null && b.next == null ) {
+//                    b.next = a;
+//                    return node;
+//                }
 
             }
 
