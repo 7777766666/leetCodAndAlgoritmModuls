@@ -76,6 +76,9 @@ public class ListNode {
                     return node;
                 }
 
+//  -2, 5
+//  -9,-6,-3,-1,1,6
+
             } else {
                 if (b.next != null) {
                     current.next = b;   //указать на head, а не второй элемент списка!!!!!
@@ -91,14 +94,14 @@ public class ListNode {
                 if (a.val < b.val && a.next == null && b.next == null ) {
                     a.next = b;
                     return node;
-                } else {
-                    b.next = a;
+                }
+                if (a.val >= b.val && a.next == null && b.next == null ) {
+                    a.next = b;
                     return node;
                 }
 
             }
-//  -2, 5
-//  -9,-6,-3,-1,1,6
+
 
         }
         return node;
