@@ -43,6 +43,7 @@ public class LinkedListCycle142 {
     public static ListNode detectCycle(ListNode head) {
 
         HashSet<Integer> integers = new HashSet<>();
+        HashSet<ListNode> integers1 = new HashSet<>();
 
         if (head == null){
             return null;
@@ -60,12 +61,12 @@ public class LinkedListCycle142 {
         }
         while (cur != null) {
 
-            int size1 = integers.size();
-            integers.add(cur.val);
-            int size2 = integers.size();
+            int size1 = integers1.size();
+            integers1.add(cur.next);
+            int size2 = integers1.size();
 
             if (size2 == size1) {
-                cur = cur;
+                cur = cur.next;
                 return cur;
 
             }
