@@ -6,7 +6,7 @@ public class ListNode {
     public ListNode next;
 
     public ListNode() {
-//        mergeTwoLists(list1, list2);
+
     }
 
     public ListNode(int val) {
@@ -16,9 +16,7 @@ public class ListNode {
     public ListNode(int val, ListNode next) {
         this.val = val;
         this.next = next;
-
     }
-
 
     public static ListNode mergeTwoLists(ListNode list1, ListNode list2) {
 
@@ -41,11 +39,9 @@ public class ListNode {
             }
         }
 
-
         ListNode a = list1;
         ListNode b = list2;
         ListNode current = null;
-        ListNode next = null;
         ListNode node = null;
 
         if (a.next == null || b.next == null) {
@@ -64,7 +60,6 @@ public class ListNode {
             }
         }
 
-
         if (a.val < b.val) {
             node = a;
             current = a;
@@ -75,30 +70,21 @@ public class ListNode {
             b = current.next;
         }
 
-
-//        System.out.println(current.val + " <-current1 " + a.val + " <-a " + b.val + " <-b");
-
-        //check 1
         while (a.next != null || b.next != null || current.next != null) {
 
             if (a.val < b.val) {
                 if (a.next != null) {
-                    current.next = a;   //указать на head, а не второй элемент списка!!!!!
+                    current.next = a;
                     current = a;
                     a = current.next;
                 } else {
                     current.next = a;
-
                     a.next = b;
                     return node;
                 }
-
-//  -2, 5
-//  -9,-6,-3,-1,1,6
-
             } else {
                 if (b.next != null) {
-                    current.next = b;   //указать на head, а не второй элемент списка!!!!!
+                    current.next = b;
                     current = b;
                     b = current.next;
                 } else {
@@ -106,23 +92,13 @@ public class ListNode {
                     b.next = a;
                     return node;
                 }
-
-//                if (a.val < b.val && a.next == null && b.next == null ) {
-//                    a.next = b;
-//                    return node;
-//                }
-//                if (a.val >= b.val && a.next == null && b.next == null ) {
-//                    b.next = a;
-//                    return node;
-//                }
-
             }
-
-
         }
         return node;
     }
 }
+
+
 
 /**
  * Definition for singly-linked list.
