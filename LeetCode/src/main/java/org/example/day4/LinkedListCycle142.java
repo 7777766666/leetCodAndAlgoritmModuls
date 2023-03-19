@@ -42,10 +42,9 @@ public class LinkedListCycle142 {
 
     public static ListNode detectCycle(ListNode head) {
 
-        HashSet<Integer> integers = new HashSet<>();
-        HashSet<ListNode> integers1 = new HashSet<>();
+        HashSet<ListNode> nodes = new HashSet<>();
 
-        if (head == null){
+        if (head == null) {
             return null;
         }
         if (head.next == null) {
@@ -54,37 +53,24 @@ public class LinkedListCycle142 {
 
         ListNode cur = head;
 
-
         if (cur.next.next == head) {
 
             return head;
         }
+        int i = 0;
         while (cur != null) {
 
-            int size1 = integers1.size();
-            integers1.add(cur.next);
-            int size2 = integers1.size();
+            int size1 = nodes.size();
+            nodes.add(cur.next);
+            int size2 = nodes.size();
 
-            if (size2 == size1) {
-                cur = cur.next;
-                return cur;
-
+            if (size2 == i) {
+                return cur.next;
             }
             cur = cur.next;
-
+            i++;
         }
-
-        System.out.println("no cycle");
         return cur;
     }
 }
 
-
-//    public static OptionalInt findInt(int[] arr) {
-//        return Arrays.stream(arr)
-//                .findAny();
-
-//    }
-//
-//
-//            }
