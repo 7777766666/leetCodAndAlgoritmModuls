@@ -54,44 +54,24 @@ public class Node {
 
         node9.children = Arrays.asList(node12);
 
-//        System.out.println(Arrays.stream(root.children.stream(). + " !!!"  );
-
-        Node test = new Node();
-//        System.out.println(test.preorder(root));
-
-
-
-
-
-
-
-
-
-
-
 
         Node nodeOne7 = new Node(12);
-        Node nodeOne6 = new Node(10, Arrays.asList(null));
-        Node nodeOne5 = new Node(9, Arrays.asList(null));
-        Node nodeOne4 = new Node(5, Arrays.asList(null));
-        Node nodeOne3 = new Node(11, Arrays.asList(nodeOne6, nodeOne7, null));
-        Node nodeOne2 = new Node(6, Arrays.asList(nodeOne4, nodeOne5, null));
-        Node nodeAfterTest = new Node(66, null);
-        Node nodeOneTest = new Node(99, Arrays.asList(nodeAfterTest, null));
-        Node nodeOne1 = new Node(8, Arrays.asList(nodeOne2, nodeOne3, null));
-        Node nodeOne = new Node(23, Arrays.asList(nodeOne1, nodeOneTest, null));
+        Node nodeOne6 = new Node(10);
+        Node nodeOne5 = new Node(9);
+        Node nodeOne4 = new Node(5);
+        Node nodeOne3 = new Node(11, Arrays.asList(nodeOne6, nodeOne7));
+        Node nodeOne2 = new Node(6, Arrays.asList(nodeOne4, nodeOne5));
+        Node nodeAfterTest = new Node(66);
+        Node nodeOne3333 = new Node(3333);
+        Node nodeOneTest = new Node(99, Arrays.asList(nodeAfterTest));
+        Node nodeOne1 = new Node(8, Arrays.asList(nodeOne2, nodeOne3));
+        Node nodeOne = new Node(23, Arrays.asList(nodeOne1, nodeOneTest, nodeOne3333));
 
-//
-//        nodeOne.children = Arrays.asList(nodeOne1, nodeOneTest);
-//
-//        nodeOne1.children = Arrays.asList(nodeOne2, nodeOne3);
-//
-//        nodeOne2.children = Arrays.asList(nodeOne4, nodeOne5);
-//        nodeOne3.children = Arrays.asList(nodeOne6, nodeOne7);
-//
-//        System.out.println(nodeOne.children);
-//
-        System.out.println(preorder(nodeOne));
+
+        List<Integer> preorder = preorder(nodeOne);
+        for (int i = 0; i < preorder.size(); i++) {
+            System.out.println(preorder.get(i));
+        }
 
 
     }
@@ -99,33 +79,30 @@ public class Node {
 
     public static List<Integer> preorder(Node root) {
         List<Integer> list = new ArrayList<>();
+        int left = 0;
+        int right = 1;
 
         if (root != null) {
             list.add(root.val);
             System.out.println(root.val);
         }
-        if (root.children.size() == 0) {
-            return list;
+        int w = 0;
+        while (w != root.children.size()) {
+            System.out.println(root.children.get(0) + "   &&&&&&&&&");
+            if (root.children.get(w) != null) {
+                list.add(root.children.get(w++).val);
+
+            }
         }
-        int z = 0;
-
-        while (root.children.size() != z) {
-            list.add(root.children.get(z++).val);
-            System.out.println((list.get(list.size() - 1) + "  !!!!!!!!!!!!"));
-
-        }
-        List<Node> childrenDown = root.children;
-        System.out.println(root.children + "  ####");
 
 
-        int i = 0;
-        while (root.children.size() != i) {
+//        if (root.children.get(left) != 0)
 
 
-            System.out.println(root.children.get(i).val);
-            i++;
-        }
         return list;
     }
+
+
+
 
 }
