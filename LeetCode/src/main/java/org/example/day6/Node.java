@@ -1,6 +1,8 @@
 package org.example.day6;
 
 
+import org.example.day4.ListNode;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -68,41 +70,24 @@ public class Node {
         Node nodeOne = new Node(23, Arrays.asList(nodeOne1, nodeOneTest, nodeOne3333));
 
 
-        List<Integer> preorder = preorder(nodeOne);
+        Node nodeNew = new Node();
+        List<Integer> preorder = nodeNew.preorder(nodeOne);
         for (int i = 0; i < preorder.size(); i++) {
             System.out.println(preorder.get(i));
         }
 
 
+
+
     }
 
-
-    public static List<Integer> preorder(Node root) {
-        List<Integer> list = new ArrayList<>();
-        int left = 0;
-        int right = 1;
-
-        if (root != null) {
-            list.add(root.val);
-            System.out.println(root.val);
+    List<Integer> arr = new ArrayList<>();
+    public List<Integer> preorder(Node root) {
+        if (root==null) return arr;
+        arr.add(root.val);
+        for (Node i : root.children) {
+            preorder(i);
         }
-        int w = 0;
-        while (w != root.children.size()) {
-            System.out.println(root.children.get(0) + "   &&&&&&&&&");
-            if (root.children.get(w) != null) {
-                list.add(root.children.get(w++).val);
-
-            }
-        }
-
-
-//        if (root.children.get(left) != 0)
-
-
-        return list;
+        return arr;
     }
-
-
-
-
 }
