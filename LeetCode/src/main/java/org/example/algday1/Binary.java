@@ -11,38 +11,66 @@ public class Binary {
 
     }
 
-    private static final int[] arr = {-1, 0, 3, 5, 9, 12, 44 };
-    private static Binary binary = new Binary(arr);
+    private static final int[] nums = {5};
+    private static Binary binary = new Binary(nums);
 
     public int index(int[] arr, int target) {
-       return index2(arr, target, 0, arr.length);
+        return index2(arr, target, 0, arr.length);
     }
 
-    private int index2(int[] x, int target, int left, int right) {
-        int index = (left + right) / 2;
-        int pivot = x[index];
-        if (right - left == 1 && target!= pivot) {
+    private int index2(int[] nums, int target, int left1, int right1) {
+
+
+
+
+        int left = 0;
+        int right = nums.length -1;
+
+        if (target < nums[left] || target > nums[right]) {
             return -1;
         }
-        if (target == pivot) {
-            System.out.println(pivot + "  pivot");
-            return pivot;
-        }
 
-        if (pivot < target) {
-            index2(x, target, index, right);
+        if (nums[left] == target ) {
+            return left;
         }
-        if (pivot > target) {
-            index2(x, target, left, index);
+        if (nums[right] == target){
+            return right;
         }
-        return pivot;
+        int index = 0;
+        int pivot = 0;
+
+        while ((right - left) != 1 ) {
+
+            index = (left + right) / 2;
+            pivot = nums[index];
+
+            if (target == pivot) {
+                return index;
+            }
+
+            if (pivot < target) {
+                left = index;
+            } else {
+                right = index;
+            }
+
+            if (right - left == 2){
+                if (target != nums[right - 1]) {
+                    return -1;
+                }else {
+                    return right - 1;
+                }
+            }
+        }
+        return -1;
     }
+
 
 
     public static void main(String[] args) {
 
-        System.out.println(Arrays.toString(arr));
-        System.out.println(Binary.binary.index(arr, 11));
+        System.out.println(Arrays.toString(nums));
+        System.out.println(Binary.binary.index(nums, -5));
 
 
 
