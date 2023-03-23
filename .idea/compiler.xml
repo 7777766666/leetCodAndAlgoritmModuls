@@ -11,8 +11,12 @@
         <module name="garbageCollector" />
         <module name="codewars" />
         <module name="algoritm" />
+        <module name="sobes" />
         <module name="LeetCode" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="untitled" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>

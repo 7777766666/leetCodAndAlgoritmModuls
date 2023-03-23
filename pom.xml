@@ -15,6 +15,7 @@
       <module>codewars</module>
       <module>garbageCollector</module>
       <module>kata</module>
+    <module>sobes</module>
   </modules>
 
   <properties>
