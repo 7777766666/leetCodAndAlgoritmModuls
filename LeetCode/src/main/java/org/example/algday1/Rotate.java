@@ -14,14 +14,19 @@ public class Rotate {
 
     public void rotate(int[] nums, int k) {
 
-        int[] arr = new int[nums.length];
+        k = k % nums.length;
+        reverse(nums, nums.length - k, nums.length - 1);
+        reverse(nums, 0, nums.length  -1 - k);
+        reverse(nums, 0, nums.length - 1);
+    }
 
-        System.arraycopy(nums, nums.length - k, arr, 0, k);
-        System.arraycopy(nums, 0, arr, k, nums.length - k );
-        nums = arr;
-        System.out.println(Arrays.toString(nums));
-
-
-
+    public static void reverse(int[] nums, int leftIndex, int rightIndex) {
+        int[] temp = new int[1];
+        while (rightIndex - leftIndex >= 0) {
+            temp[0] = nums[leftIndex];
+            nums[leftIndex++] = nums[rightIndex];
+            nums[rightIndex--] = temp[0];
+        }
     }
 }
+
