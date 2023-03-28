@@ -59,22 +59,25 @@ public class Payments {
         double[] result = new double[n];
         double[] sum = new double[n];
         int z = 0;
-        for (int i = 0; i < n; i++) {
-            if (!(dayStart[z] <= partsPoints[i] && dayEnd[z] <= partsPoints[i] ||
-                    dayStart[z] > partsPoints[i + 1] && dayEnd[z] > partsPoints[i + 1])) {
-                if (dayStart[z] <= partsPoints[i]) {
-                    tempLeft = partsPoints[i] + 1;
-                } else {
-                    tempLeft = dayStart[z];
+        while (z < n) {
+            for (int i = 0; i < n; i++) {
+                if (!(dayStart[z] <= partsPoints[i] && dayEnd[z] <= partsPoints[i] ||
+                        dayStart[z] > partsPoints[i + 1] && dayEnd[z] > partsPoints[i + 1])) {
+                    if (dayStart[z] <= partsPoints[i]) {
+                        tempLeft = partsPoints[i] + 1;
+                    } else {
+                        tempLeft = dayStart[z];
+                    }
+                    if (dayEnd[z] >= partsPoints[i + 1]) {
+                        tempRight = partsPoints[i + 1];
+                    } else {
+                        tempRight = dayEnd[z];
+                    }
+                    workDays[i] = tempRight - tempLeft + 1;
+                    sum[i] += perDay[z] * workDays[i];
                 }
-                if (dayEnd[z] >= partsPoints[i + 1]) {
-                    tempRight = partsPoints[i + 1];
-                } else {
-                    tempRight = dayEnd[z];
-                }
-                workDays[i] = tempRight - tempLeft + 1;
-                sum[i] = perDay[i] * workDays[i];
             }
+            z++;
         }
         System.out.println((Arrays.toString(perDay )+ "  perDay"));
         System.out.println(Arrays.toString(workDays) + "  workdays");
