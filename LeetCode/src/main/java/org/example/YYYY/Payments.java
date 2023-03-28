@@ -43,27 +43,28 @@ public class Payments {
         for (int i = 0; i < 5; i++) {
             partsPoints[i] = endPeriods[i].getDayOfYear();
         }
+        partsPoints[0] = 0;
         System.out.println((Arrays.toString(partsPoints)) + "   partsPoints");
         double[] perDay = new double[n];
         for (int i = 0; i < n; i++) {
             int perDay100 = (int)((double)100*money[i] / (double) (dayEnd[i] - dayStart[i] + 1));
-            double moneyDay = (double) perDay100 / 100;
+            double moneyDay = (double) perDay100 / (double) 100;
             perDay[i] = moneyDay;
             System.out.println(perDay100 + "  perDay100");
             System.out.println(moneyDay + "  moneyDay");
         }
 
-        int[] workDays = new int[n];
+        int[] workDays = new int[partsPoints.length - 1];
         int tempLeft = 0;
         int tempRight = 0;
         double[] result = new double[n];
-        double[] sum = new double[n];
+        double[] sum = new double[partsPoints.length - 1];
         int z = 0;
         while (z < n) {
-            for (int i = 0; i < n; i++) {
+            for (int i = 0; i < partsPoints.length - 1; i++) {
                 if (!(dayStart[z] <= partsPoints[i] && dayEnd[z] <= partsPoints[i] ||
                         dayStart[z] > partsPoints[i + 1] && dayEnd[z] > partsPoints[i + 1])) {
-                    if (dayStart[z] <= partsPoints[i]) {
+                    if (dayStart[z] <= partsPoints[i] + 1) {
                         tempLeft = partsPoints[i] + 1;
                     } else {
                         tempLeft = dayStart[z];
@@ -74,6 +75,7 @@ public class Payments {
                         tempRight = dayEnd[z];
                     }
                     workDays[i] = tempRight - tempLeft + 1;
+                    System.out.println(workDays[i] + "   workDays");
                     sum[i] += perDay[z] * workDays[i];
                 }
             }
