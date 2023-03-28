@@ -33,7 +33,7 @@ public class Payments {
 
         LocalDate[] endPeriods = new LocalDate[5];
 
-        endPeriods[0] = LocalDate.of(2022, 01,01);
+        endPeriods[0] = LocalDate.of(2022, 01, 01);
         endPeriods[1] = LocalDate.of(2022, 03, 31);
         endPeriods[2] = LocalDate.of(2022, 06, 30);
         endPeriods[3] = LocalDate.of(2022, 9, 30);
@@ -48,37 +48,33 @@ public class Payments {
         int[] workDays = new int[n];
         int tempLeft = 0;
         int tempRight = 0;
+        double daySum = 0;
+        double[] sum = new double[n];
         int z = 0;
         for (int i = 0; i < n; i++) {
-            if ( ! (dayStart[z] <= partsPoints[i] && dayEnd[z] <= partsPoints[i] ||
-            dayStart[z] > partsPoints[i + 1] && dayEnd[z] > partsPoints[i + 1])) {
+            if (!(dayStart[z] <= partsPoints[i] && dayEnd[z] <= partsPoints[i] ||
+                    dayStart[z] > partsPoints[i + 1] && dayEnd[z] > partsPoints[i + 1])) {
                 if (dayStart[z] <= partsPoints[i]) {
                     tempLeft = partsPoints[i] + 1;
-                }else {
+                } else {
                     tempLeft = dayStart[z];
                 }
-                if (dayEnd[z] >= partsPoints[i +1]) {
+                if (dayEnd[z] >= partsPoints[i + 1]) {
                     tempRight = partsPoints[i + 1];
-                }else {
+                } else {
                     tempRight = dayEnd[z];
                 }
                 workDays[i] = tempRight - tempLeft + 1;
+                daySum = (100 * money[i]) / (dayEnd[i] - dayStart[i] + 1) ;
+                double moneyDay = daySum / 100;
+                sum[i] = moneyDay * workDays[i];
+
+                System.out.println(moneyDay + "  %%%");
+                System.out.println(Arrays.toString(sum));
             }
         }
 
-
-            System.out.println(Arrays.toString(workDays) + "  workdays");
-
-
-
-//        if (dayStart)
-
-
-
-//            System.out.println((Arrays.toString(dayWorkStartPeriod)) + "   Days of periods");
-
-
-
+        System.out.println(Arrays.toString(workDays) + "  workdays");
 
 
     }
