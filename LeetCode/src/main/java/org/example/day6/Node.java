@@ -45,18 +45,13 @@ public class Node {
         Node node12 = new Node(14);
 
         root.children = Arrays.asList(node, node1, node2, node3);
-
         node1.children = Arrays.asList(node4, node5);
         node2.children = Arrays.asList(node6);
         node3.children = Arrays.asList(node7, node8);
-
         node5.children = Arrays.asList(node9);
         node6.children = Arrays.asList(node10);
         node7.children = Arrays.asList(node11);
-
         node9.children = Arrays.asList(node12);
-
-
         Node nodeOne7 = new Node(12);
         Node nodeOne6 = new Node(10);
         Node nodeOne5 = new Node(9);

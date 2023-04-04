@@ -13,22 +13,24 @@ public class ScanReservYandex {
     public static void main(String[] args) throws IOException {
 
 
-        BufferedReader bufferedReader = new BufferedReader(new FileReader("E:\\1\\input.txt"));
-        double newWeight = (double) Integer.valueOf(bufferedReader.readLine());
-        String nk = bufferedReader.readLine();
-        String[] split = nk.split(" ");
-        Integer n = Integer.valueOf(split[0]);
-        Integer k = Integer.valueOf(split[1]);
+        BufferedReader reader = new BufferedReader(new FileReader("E:\\1\\1\\input.txt"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\1\\1\\output.txt"));
 
-        System.out.println(newWeight);
-        System.out.println(n);
-        System.out.println(k);
+//        BufferedReader reader = new BufferedReader(new FileReader("input.txt"));
+//        BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
 
+
+        String firstLine = reader.readLine();
+        double newWeight = (double) Integer.valueOf(firstLine);
+        String nk = reader.readLine();
+        String[] splitFirst = nk.split(" ");
+        Integer n = Integer.valueOf(splitFirst[0]);
+        Integer k = Integer.valueOf(splitFirst[1]);
         String[] photos = new String[n];
         double[] wSize = new double[n];
         double[] hSize = new double[n];
         for (int i = 0; i < n; i++) {
-            photos[i] = bufferedReader.readLine();
+            photos[i] = reader.readLine();
             String[] photoSize = photos[i].split("x");
             wSize[i] = Integer.valueOf(photoSize[0]);
             hSize[i] = Integer.valueOf(photoSize[1]);
@@ -38,27 +40,19 @@ public class ScanReservYandex {
         for (int i = 0; i < newH.length; i++) {
             newH[i] = (int) Math.ceil (hSize[i] * newWeight / wSize[i]);
         }
-
-
         Arrays.sort(newH);
-        System.out.println((Arrays.toString(newH)) + "   hsortFinal");
-        int min = 0;
+        int minSend = 0;
         for (int i = 0; i < k; i++) {
-            min += newH[i];
+            minSend += newH[i];
         }
-        System.out.println(min);
-        int max = 0;
+        int maxSend = 0;
         for (int i = newH.length - k; i < newH.length; i++) {
-            max += newH[i];
+            maxSend += newH[i];
         }
-        System.out.println(max);
-
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("E:\\1\\output.txt"));
-        bufferedWriter.write(String.valueOf(min));
-        bufferedWriter.newLine();
-        bufferedWriter.write(String.valueOf(max));
-        bufferedWriter.close();
-        bufferedReader.close();
-
+        writer.write(String.valueOf(minSend));
+        writer.newLine();
+        writer.write(String.valueOf(maxSend));
+        writer.close();
+        reader.close();
     }
 }

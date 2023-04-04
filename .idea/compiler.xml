@@ -8,9 +8,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="kata" />
+        <module name="coducation" />
+        <module name="algoritm" />
+        <module name="patterns" />
         <module name="garbageCollector" />
         <module name="codewars" />
-        <module name="algoritm" />
+        <module name="thread" />
         <module name="sobes" />
         <module name="LeetCode" />
       </profile>

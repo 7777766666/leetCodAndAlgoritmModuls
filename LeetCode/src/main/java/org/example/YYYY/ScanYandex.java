@@ -12,9 +12,17 @@ public class ScanYandex {
     public static void main(String[] args) throws IOException {
 
 
-        BufferedReader bufferedReader = new BufferedReader(new FileReader("E:\\1\\input.txt"));
-        double newWeight = (double) Integer.valueOf(bufferedReader.readLine());
-        String nk = bufferedReader.readLine();
+        BufferedReader reader = new BufferedReader(new FileReader("E:\\1\\input.txt"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\1\\output.txt"));
+
+//        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+//        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
+
+
+
+
+        double newWeight = (double) Integer.valueOf(reader.readLine());
+        String nk = reader.readLine();
         String[] split = nk.split(" ");
         Integer n = Integer.valueOf(split[0]);
         Integer k = Integer.valueOf(split[1]);
@@ -27,7 +35,7 @@ public class ScanYandex {
         double[] wSize = new double[n];
         double[] hSize = new double[n];
         for (int i = 0; i < n; i++) {
-            photos[i] = bufferedReader.readLine();
+            photos[i] = reader.readLine();
             String[] photoSize = photos[i].split("x");
             wSize[i] = Integer.valueOf(photoSize[0]);
             hSize[i] = Integer.valueOf(photoSize[1]);
@@ -52,12 +60,12 @@ public class ScanYandex {
         }
         System.out.println(max);
 
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("E:\\1\\output.txt"));
-        bufferedWriter.write(String.valueOf(min));
-        bufferedWriter.newLine();
-        bufferedWriter.write(String.valueOf(max));
-        bufferedWriter.close();
-        bufferedReader.close();
+
+        writer.write(String.valueOf(min));
+        writer.newLine();
+        writer.write(String.valueOf(max));
+        writer.close();
+        reader.close();
 
     }
 }

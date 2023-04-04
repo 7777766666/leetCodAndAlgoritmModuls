@@ -16,6 +16,9 @@
       <module>garbageCollector</module>
       <module>kata</module>
     <module>sobes</module>
+      <module>patterns</module>
+      <module>thread</module>
+      <module>coducation</module>
   </modules>
 
   <properties>
