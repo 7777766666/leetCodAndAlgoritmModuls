@@ -1,21 +1,18 @@
 package org.example.sort;
 
 import java.math.BigInteger;
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Deque;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static org.example.sort.RealEnum.ACTIVE;
 import static org.example.sort.RealEnum.BLOCKED;
 import static org.example.sort.RealEnum.CREATED;
 import static org.example.sort.RealEnum.EMPTY;
 import static org.example.sort.RealEnum.PAUSED;
 
-public class list {
+public class list7 {
 
     private static EnumComporator enumComporator = new EnumComporator();
 
@@ -32,11 +29,13 @@ public class list {
 //        enumList.add(ACTIVE);
 
         List<String> list = new ArrayList<>();
-        list.add("CREATED");
+//        list.add("CREATED");
         list.add("PAUSED");
         list.add("BLOCKED");
         list.add("EMPTY");
-        list.add("ACTIVE");
+        list.add("BLOCKED");
+        list.add("EMPTY");
+//        list.add("ACTIVE");
 
 //        System.out.println(factorial(36));
         System.out.println(sss(enumList));

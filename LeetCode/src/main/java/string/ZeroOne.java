@@ -8,36 +8,36 @@ public class ZeroOne {
 
     public static void main(String[] args) {
 
-        int[] z = {1,1, 0, 0, 1, 1, 1,1, 0 , 1};
-        System.out.println(ZeroOne.find(z));
+        int[] z = {1, 1, 1, 1, 0, 0};
+        ZeroOne.findSeq(z);
 
     }
 
-    private static int find(int[] x){
+    public static void findSeq(int[] arr) {
 
-        int l = 0;
-        int r = 0;
-        int count = 0;
-        int zero = 0;
-        while (r != x.length) {
-            if (x[r] == 1) {
-                count++;
-                r++;
-            } else if (x[r] == 0 && zero == 0) {
-                count++;
-                r++;
-                zero++;
+        var maxSeqLength = 0;
+        var currentSeqLength = 0;
+        var oCount = 0;
+        var oPos = -1;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == 1) {
+                currentSeqLength++;
+            } else if (oCount == 0) {
+                currentSeqLength++;
+                oPos = i;
+                oCount++;
             } else {
-                while (x[l] != 0) {
-
-                    l++;
-                    count--;
-                }
-                zero--;
+                if (maxSeqLength < currentSeqLength) maxSeqLength = currentSeqLength;
+                currentSeqLength = 0;
+                oCount = 0;
+                i = oPos;
             }
         }
-return count;
 
+        if (maxSeqLength < currentSeqLength) maxSeqLength = currentSeqLength;
+
+        System.out.println(maxSeqLength);
     }
 
 }
