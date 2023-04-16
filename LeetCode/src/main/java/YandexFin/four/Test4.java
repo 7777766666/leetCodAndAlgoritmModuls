@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Test12Pass {
+public class Test4 {
 
 
     public static void main(String[] args) throws IOException {
@@ -22,6 +22,7 @@ public class Test12Pass {
         int tests = Integer.parseInt(reader.readLine());
 
 
+
         int count = 0;
         while (tests >= count) {
 
@@ -30,17 +31,17 @@ public class Test12Pass {
             int car = Integer.parseInt(split[1]);
             int[][] road = new int[userLine][3];
 
-                for (int i = 0; i < car; i++) {
-                    String[] str = reader.readLine().split(" ");
-                    road[Integer.parseInt(str[0]) - 1][Integer.parseInt(str[1]) - 1] = 1;
-                }
+            for (int i = 0; i < car; i++) {
+                String[] str = reader.readLine().split(" ");
+                road[Integer.parseInt(str[0]) - 1][Integer.parseInt(str[1]) - 1] = 1;
+            }
 
-                for (int i = 0; i < road.length; i++) {
-                    for (int j = 0; j < road[i].length; j++) {
-                        System.out.print(road[i][j] + " ");
-                    }
-                    System.out.println(); // перенос строки между строками массива
+            for (int i = 0; i < road.length; i++) {
+                for (int j = 0; j < road[i].length; j++) {
+                    System.out.print(road[i][j] + " ");
                 }
+                System.out.println(); // перенос строки между строками массива
+            }
 
             count++;
             if (tests == count) {

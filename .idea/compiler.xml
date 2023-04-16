@@ -10,6 +10,7 @@
         <module name="kata" />
         <module name="coducation" />
         <module name="algoritm" />
+        <module name="reflection" />
         <module name="patterns" />
         <module name="garbageCollector" />
         <module name="codewars" />
