@@ -5,6 +5,10 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Test4 {
 
@@ -12,88 +16,62 @@ public class Test4 {
     public static void main(String[] args) throws IOException {
 
 
-        BufferedReader reader = new BufferedReader(new FileReader("E:\\2\\4\\input.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader("E:\\2\\4\\input1.txt"));
         BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\2\\4\\output.txt"));
+
 
 //            BufferedReader reader = new BufferedReader(new FileReader("input.txt"));
 //            BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
 
 
-        int tests = Integer.parseInt(reader.readLine());
+        int test = Integer.parseInt(reader.readLine());
+        System.out.println(test);
 
+        for (int i = 0; i < test; i++) {
 
-
-        int count = 0;
-        while (tests >= count) {
 
             String[] split = reader.readLine().split(" ");
             int userLine = Integer.parseInt(split[0]);
-            int car = Integer.parseInt(split[1]);
-            int[][] road = new int[userLine][3];
+            int cars = Integer.parseInt(split[1]);
+            System.out.println(userLine);
+            System.out.println(cars);
 
-            for (int i = 0; i < car; i++) {
-                String[] str = reader.readLine().split(" ");
-                road[Integer.parseInt(str[0]) - 1][Integer.parseInt(str[1]) - 1] = 1;
-            }
+            int zMax = -1;
 
-            for (int i = 0; i < road.length; i++) {
-                for (int j = 0; j < road[i].length; j++) {
-                    System.out.print(road[i][j] + " ");
+
+                int z = 0;
+                int l = 0;
+                int m = 0;
+                int r = 0;
+
+                while (cars > 0) {
+
+                    Map<Integer, List<Integer>> map = new HashMap<>();
+                    String[] car = reader.readLine().split(" ");
+                    int key = Integer.parseInt(car[0]);
+                    if (!map.containsKey(key)) {
+                        List<Integer> values = new ArrayList<>();
+                        values.add(Integer.parseInt(car[1]));
+                        map.put(key, values);
+                    } else {
+                        List<Integer> values = map.get(key);
+                        values.add(Integer.parseInt(car[1]));
+                        map.put(key, values);
+                    }
+                    cars--;
+
                 }
-                System.out.println(); // перенос строки между строками массива
             }
 
-            count++;
-            if (tests == count) {
-                System.out.println((maxLine(road)) + "  second result");
-                writer.write(String.valueOf((maxLine(road))));
-                count = 1_000_000;
-            } else {
-                System.out.println((maxLine(road)) + "  first result");
-                writer.write(String.valueOf((maxLine(road))));
-                writer.newLine();
-            }
+
         }
-        reader.close();
-        writer.close();
+
+
     }
+//        writer.close();
 
-    public static int maxLine(int[][] road) {
 
-        int z = 0;
 
-        int l = 0;
-        int m = 0;
-        int r = 0;
 
-        while (true) {
 
-            if (road[z][0] == 1) {
-                l = 1;
-            } else {
-                if (l == 0 || m == 0) {
-                    l = 0;
-                }
-            }
-            if (road[z][2] == 1) {
-                r = 1;
-            } else {
-                if (r == 0 || m == 0) {
-                    r = 0;
-                }
-            }
-            if (road[z][1] == 1) {
-                m = 1;
 
-            } else {
-                m = 0;
-            }
-            if ((l + m + r) == 3) {
-                return z;
-            } else {
-                z++;
-                if (z == road.length) return z;
-            }
-        }
-    }
-}

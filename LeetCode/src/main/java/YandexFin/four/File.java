@@ -1,21 +1,20 @@
-package YandexFin;
+package YandexFin.four;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 
-public class Four {
+public class File {
 
     public static void main(String[] args) throws IOException {
 
 
         BufferedReader reader = new BufferedReader(new FileReader("E:\\2\\4\\input.txt"));
-        BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\2\\4\\output.txt"));
 
-//            BufferedReader reader = new BufferedReader(new FileReader("input.txt"));
-//            BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
+//        FileWriter writer = new FileWriter("E:\\2\\4\\output.txt");
+        PrintWriter writer = new PrintWriter(new FileWriter("E:\\2\\4\\output.txt"));
 
 
         int tests = Integer.parseInt(reader.readLine());
@@ -48,8 +47,9 @@ public class Four {
                 count = 1_000_000;
             } else {
                 System.out.println((maxLine(road)) + "  first result");
+                PrintWriter writer1 = new PrintWriter(new FileWriter("E:\\2\\4\\output.txt"));
                 writer.write(String.valueOf((maxLine(road))));
-                writer.newLine();
+                writer1.println(); // Этот метод автоматически добавляет перенос строки в конец вывода.
             }
         }
         reader.close();
