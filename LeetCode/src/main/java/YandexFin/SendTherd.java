@@ -2,7 +2,7 @@ package YandexFin;
 
 import java.io.*;
 
-public class Tree {
+public class SendTherd {
 
 
     public static void main(String[] args) throws IOException {
@@ -12,41 +12,41 @@ public class Tree {
         BufferedReader reader = new BufferedReader(new FileReader("input.txt"));
         BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
 
-        String[] nAndX = reader.readLine().split(" ");
-        int n = Integer.parseInt(nAndX[0]);
-        int x = Integer.parseInt(nAndX[1]);
+        String[] devNum = reader.readLine().split(" ");
+        int dev = Integer.parseInt(devNum[0]);
+        int num = Integer.parseInt(devNum[1]);
 
-        int[][] graph = new int[n][n];
+        int[][] graph = new int[dev][dev];
         int m = Integer.parseInt(reader.readLine());
-        int INF = Integer.MAX_VALUE / 2;
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                graph[i][j] = (i == j) ? 0 : INF;
+        int MAX = Integer.MAX_VALUE / 2;
+        for (int i = 0; i < dev; i++) {
+            for (int j = 0; j < dev; j++) {
+                graph[i][j] = (i == j) ? 0 : MAX;
             }
         }
         for (int i = 0; i < m; i++) {
             String[] input = reader.readLine().split(" ");
             int a = Integer.parseInt(input[0]) - 1;
             int b = Integer.parseInt(input[1]) - 1;
-            int t = Integer.parseInt(input[2]);
-            graph[a][b] = t;
+            int time = Integer.parseInt(input[2]);
+            graph[a][b] = time;
         }
 
-        for (int k = 0; k < n; k++) {
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < n; j++) {
+        for (int k = 0; k < dev; k++) {
+            for (int i = 0; i < dev; i++) {
+                for (int j = 0; j < dev; j++) {
                     graph[i][j] = Math.min(graph[i][j], graph[i][k] + graph[k][j]);
                 }
             }
         }
 
         int maxTime = 0;
-        for (int i = 0; i < n; i++) {
-            maxTime = Math.max(maxTime, graph[x - 1][i]);
+        for (int i = 0; i < dev; i++) {
+            maxTime = Math.max(maxTime, graph[num - 1][i]);
         }
 
-        if (maxTime == INF) {
-            writer.write("-1");
+        if (maxTime == MAX) {
+            writer.write(String.valueOf(-1));
         } else {
             writer.write(Integer.toString(maxTime));
         }

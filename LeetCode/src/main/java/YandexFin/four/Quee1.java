@@ -7,7 +7,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class Quee1 {
 
@@ -28,6 +30,7 @@ public class Quee1 {
 
 
             Map<Integer, int[]> map = new HashMap<>();
+            Set<Integer> carUnic = new HashSet<>();
 
             for (int i = 0; i < allCars; i++) {
 
@@ -36,14 +39,14 @@ public class Quee1 {
                 int car = Integer.parseInt(split[1]);
 
 
-                if (map.containsKey(key)) {
+                if (carUnic.contains(key)) {
                     int[] cars = map.get(key);
-                    cars[car - 1] = 1;
+                    cars[car - 1] = -1;
                     map.put(key, cars);
                 } else {
+                    carUnic.add(key);
                     int[] newCar = new int[3];
-                    newCar[car - 1] = 1;
-
+                    newCar[car - 1] = -1;
                     map.put(key, newCar);
                 }
 
@@ -58,7 +61,7 @@ public class Quee1 {
             }
 
             System.out.println("---------------------------");
-            int check = check(map, userLine, allCars);
+            int check = check(map, userLine, allCars, carUnic);
             System.out.println(check + "  линия до которой доехали");
             System.out.println("---------------------------");
 
@@ -76,7 +79,7 @@ public class Quee1 {
         reader.close();
     }
 
-    public static int check(Map<Integer, int[]> map, int userLine, int allCars) {
+    public static int check(Map<Integer, int[]> map, int userLine, int allCars, Set<Integer> carUnic ) {
 
         if (userLine <= 1 || allCars < 3) {
             return userLine;

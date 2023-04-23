@@ -14,44 +14,46 @@ public class First {
         BufferedReader reader = new BufferedReader(new FileReader("input.txt"));
         BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
 
-        String n1 = reader.readLine();
-        String n2 = reader.readLine();
+        String first = reader.readLine();
+        String second = reader.readLine();
 
-        int i = n1.length() - 1;
-        int j = n2.length() - 1;
+        int i = first.length() - 1;
+        int j = second.length() - 1;
 
-        int onWait = 0;
+        int wait = 0;
         StringBuilder builder = new StringBuilder();
         while (i > 1 || j > 1) {
-            int[] info1 = getNextValidDigit(n1, i);
-            int[] info2 = getNextValidDigit(n2, j);
+            int[] info1 = next(first, i);
+            int[] info2 = next(second, j);
             int digit1 = info1[0];
             int digit2 = info2[0];
             i -= info1[1];
             j -= info2[1];
-            int sum = digit1 + digit2 + onWait;
-            onWait = sum / 10;
+            int sum = digit1 + digit2 + wait;
+            wait = sum / 10;
             builder.append(sum % 10).append(" ,");
         }
-        if (onWait != 0) builder.append(onWait);
+        if (wait != 0) builder.append(wait);
         else builder.delete(builder.length() - 2, builder.length());
 
         writer.write(builder.reverse().insert(0, "[").append("]").toString());
         writer.close();
     }
 
-    private static int[] getNextValidDigit(String number, int index) {
-        if (index <= 1) return new int[] {0, 0};
-        int indexCopy = index;
+    private static int[] next(String number, int index) {
+        if (index <= 1) {
+            return new int[] {0, 0};
+        }
+        int next = index;
         while (index > 1) {
             index--;
             char ch = number.charAt(index);
             if (Character.isDigit(ch)) {
-                return new int[] {Character.getNumericValue(ch), indexCopy - index};
+                return new int[] {Character.getNumericValue(ch), next - index};
             }
         }
 
-        return new int[] {0, indexCopy - index};
+        return new int[] {0, next - index};
 
     }
 }

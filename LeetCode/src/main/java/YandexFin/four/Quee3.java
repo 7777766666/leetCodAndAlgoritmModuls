@@ -10,18 +10,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class Quee2 {
+
+public class Quee3 {
 
 
     public static void main(String[] args) throws IOException {
 
 
-        BufferedReader reader = new BufferedReader(new FileReader("E:\\2\\4\\input1.txt"));
-        BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\2\\4\\output.txt"));
-
-//        BufferedReader reader = new BufferedReader(new FileReader("input.txt"));
-//        BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
-
+        BufferedReader reader = new BufferedReader(new FileReader("input.txt"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
 
         int tests = Integer.parseInt(reader.readLine());
 
@@ -106,7 +103,7 @@ public class Quee2 {
                 l1 = -1;
             }
 
-            if (value[1] == 0 ) {
+            if (value[1] == 0 && (l == 0 || m == 0 || r == 0)) {
                 m1 = 0;
             } else {
                 m1 = -1;

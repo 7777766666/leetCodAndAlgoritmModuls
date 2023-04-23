@@ -1,6 +1,5 @@
 package YandexFin.four;
 
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -10,18 +9,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class Quee2 {
-
+public class Quick1 {
 
     public static void main(String[] args) throws IOException {
 
 
-        BufferedReader reader = new BufferedReader(new FileReader("E:\\2\\4\\input1.txt"));
-        BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\2\\4\\output.txt"));
 
-//        BufferedReader reader = new BufferedReader(new FileReader("input.txt"));
-//        BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
-
+        BufferedReader reader = new BufferedReader(new FileReader("input.txt"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
 
         int tests = Integer.parseInt(reader.readLine());
 
@@ -80,47 +75,50 @@ public class Quee2 {
             return userLine;
         }
 
-        int l = 0;
+        int l = -1;
         int m = 0;
-        int r = 0;
+        int r = -1;
 
-        int l1;
-        int m1;
-        int r1;
+        int l1 = -1;
+        int m1 = -1;
+        int r1 = -1;
 
 
         for (Map.Entry<Integer, int[]> xxx : map.entrySet()) {
 
             if (map.get(xxx.getKey() - 1) == null) {
-                l = 0;
+                l = -1;
                 m = 0;
-                r = 0;
+                r = -1;
             }
 
             int[] value = xxx.getValue();
 
 
-            if (value[0] == 0 && (l == 0 || m == 0)) {
-                l1 = 0;
-            } else {
-                l1 = -1;
-            }
-
-            if (value[1] == 0 ) {
+            if (value[1] == 0) {
                 m1 = 0;
-            } else {
-                m1 = -1;
-            }
-
-            if (value[2] == 0 && (m == 0 || r == 0)) {
-                r1 = 0;
-            } else {
+                l1 = -1;
                 r1 = -1;
-            }
-
-            if ((l1 + m1 + r1) == -3) {
+            } else if (value[0] == 0 || value[2] == 0) {
+                m1 = -1;
+                if (value[0] == 0 && (l == 0 || m ==0)){
+                    l1 = 0;
+                }else {
+                    l1 = -1;
+                }
+                if (value[2] == 0 && (m ==0 || r == 0)){
+                    r1 = 0;
+                   }else {
+                    r1 = -1;
+                }
+            }else {
                 return (xxx.getKey() - 1);
             }
+
+            if (l1 + m1 + r1 == -3){
+                return (xxx.getKey() - 1);
+            }
+
 
             l = l1;
             m = m1;

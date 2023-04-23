@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.TreeMap;
 
 public class Graph {
 
@@ -61,8 +62,15 @@ public class Graph {
 
 
             }
+//            Map<Integer, int[]> map = new LinkedHashMap<>();
+// Добавление элементов в map
+
+            Map<Integer, int[]> sortedMap = new TreeMap<>(map);
+
+
+
             System.out.println("---------------------------");
-            int check = check(map, userLine, allCars);
+            int check = check(sortedMap, userLine, allCars);
             System.out.println(check + "  линия до которой доехали");
             System.out.println("---------------------------");
 

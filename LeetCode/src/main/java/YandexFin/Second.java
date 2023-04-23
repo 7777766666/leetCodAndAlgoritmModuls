@@ -7,14 +7,14 @@ public class Second {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader("input.txt"));
         BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
-        String[] nm = reader.readLine().split(" ");
-        int n = Integer.parseInt(nm[0]);
-        int m = Integer.parseInt(nm[1]);
-        String[] mySchedule = reader.readLine().split("-");
-        int start = convertToMinutes(mySchedule[0]);
-        int end = convertToMinutes(mySchedule[1]);
+        String[] spit = reader.readLine().split(" ");
+        int n = Integer.parseInt(spit[0]);
+        int meet = Integer.parseInt(spit[1]);
+        String[] myTime = reader.readLine().split("-");
+        int start = convertToMinutes(myTime[0]);
+        int end = convertToMinutes(myTime[1]);
         int[] busy = new int[24 * 60]; // массив, где busy[i] = 1, если время i занято, и 0 иначе
-        for (int i = 0; i < m; i++) {
+        for (int i = 0; i < meet; i++) {
             String[] meeting = reader.readLine().split(" ");
             int member = Integer.parseInt(meeting[0]) - 1; // уменьшаем на 1, чтобы индексация начиналась с 0
             String[] times = meeting[1].split("-");
