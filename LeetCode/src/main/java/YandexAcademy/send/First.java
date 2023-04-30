@@ -1,4 +1,4 @@
-package YandexAcademy;
+package YandexAcademy.send;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -6,7 +6,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,9 +14,11 @@ public class First {
     public static void main(String[] args) throws IOException {
 
 
-        BufferedReader reader = new BufferedReader(new FileReader("E:\\4\\1\\input.txt"));
-        BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\4\\1\\output.txt"));
+//        BufferedReader reader = new BufferedReader(new FileReader("E:\\4\\1\\input.txt"));
+//        BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\4\\1\\output.txt"));
 
+        BufferedReader reader = new BufferedReader(new FileReader("input.txt"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
 
         String[] split = reader.readLine().split(" ");
         int n = Integer.parseInt(split[0]);
@@ -65,7 +66,7 @@ public class First {
                     }
                 }
                 result.add(index);
-                System.out.println(getMax + "  getMax  " + index + "  index");
+
             } else {
                 int getMin = 2_147_000_000;
                 int index = -1;
@@ -77,14 +78,12 @@ public class First {
                     }
                 }
                 result.add(index);
-                System.out.println(getMin + "  getMin  " + index + "  index");
+
             }
         }
 
-        System.out.println(Arrays.toString(all));
-        System.out.println(Arrays.toString(resetIndex));
 
-        System.out.println(result + "  result");
+
         for (int i = 0; i < result.size() - 1; i++) {
             writer.write(String.valueOf(result.get(i)));
             writer.newLine();

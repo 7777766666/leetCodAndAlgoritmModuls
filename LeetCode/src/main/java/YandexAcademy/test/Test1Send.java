@@ -1,4 +1,4 @@
-package YandexAcademy;
+package YandexAcademy.test;
 
 
 import java.io.BufferedWriter;
