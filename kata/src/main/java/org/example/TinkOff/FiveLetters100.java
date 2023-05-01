@@ -121,8 +121,8 @@ public class FiveLetters100 {
 //        Выходные:
 //
 //        1, 0, -1, 1, -1
-
-
+//
+//
 //import java.util.*;
 //        import java.lang.*;
 //

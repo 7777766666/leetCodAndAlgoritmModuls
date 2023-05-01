@@ -1,89 +1,89 @@
-package org.example.TinkOff;
-
-//import java.util.*;
-//import java.lang.*;
-//import org.json.JSONObject;
-//import org.json.JSONArray;
-//import java.time.ZonedDateTime;
-//import java.time.format.DateTimeFormatter;
+//package org.example.TinkOff;
 //
-//class PriorityDelivery100
-//{
-//    public static void main(String args[])
-//    {
-//        Scanner scanner = new Scanner(System.in);
-//        String json = scanner.nextLine(); // {"products": [...]}
+////import java.util.*;
+////import java.lang.*;
+////import org.json.JSONObject;
+////import org.json.JSONArray;
+////import java.time.ZonedDateTime;
+////import java.time.format.DateTimeFormatter;
+////
+////class PriorityDelivery100
+////{
+////    public static void main(String args[])
+////    {
+////        Scanner scanner = new Scanner(System.in);
+////        String json = scanner.nextLine(); // {"products": [...]}
+////
+////        // Parse input JSON
+////        JSONObject input = new JSONObject(json);
+////        JSONArray products = input.getJSONArray("products");
+////
+////        // Sort products by meetingTime in ascending order
+////        List<JSONObject> sortedProducts = new ArrayList<>();
+////        for (int i = 0; i < products.length(); i++) {
+////            sortedProducts.add(products.getJSONObject(i));
+////        }
+////        Collections.sort(sortedProducts, new Comparator<JSONObject>() {
+////            @Override
+////            public int compare(JSONObject p1, JSONObject p2) {
+////                ZonedDateTime t1 = ZonedDateTime.parse(p1.getString("meetingTime"));
+////                ZonedDateTime t2 = ZonedDateTime.parse(p2.getString("meetingTime"));
+////                return t1.compareTo(t2);
+////            }
+////        });
+////
+////        // Aggregate products into meetings
+////        List<JSONObject> meetings = new ArrayList<>();
+////        for (JSONObject product : sortedProducts) {
+////            String clientId = product.getString("clientId");
+////            String addressId = product.getString("addressId");
+////            ZonedDateTime meetingTime = ZonedDateTime.parse(product.getString("meetingTime"));
+////            JSONObject meeting = null;
+////            for (JSONObject m : meetings) {
+////                if (m.getString("clientId").equals(clientId) && m.getString("addressId").equals(addressId)) {
+////                    meeting = m;
+////                    break;
+////                }
+////            }
+////            if (meeting == null) {
+////                meeting = new JSONObject();
+////                meeting.put("clientId", clientId);
+////                meeting.put("addressId", addressId);
+////                meeting.put("meetingTime", meetingTime.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME));
+////                meeting.put("products", new JSONArray());
+////                meetings.add(meeting);
+////            }
+////            JSONArray meetingProducts = meeting.getJSONArray("products");
+////            JSONObject productCopy = new JSONObject();
+////            productCopy.put("id", product.getString("id"));
+////            productCopy.put("type", product.getString("type"));
+////            productCopy.put("creationTime", product.getString("creationTime"));
+////            meetingProducts.put(productCopy);
+////        }
+////
+////        // Format and print output JSON
+////        JSONObject output = new JSONObject();
+////        output.put("meetings", new JSONArray(meetings));
+////        System.out.println(output.toString(2));
+////    }
+////}
 //
-//        // Parse input JSON
-//        JSONObject input = new JSONObject(json);
-//        JSONArray products = input.getJSONArray("products");
 //
-//        // Sort products by meetingTime in ascending order
-//        List<JSONObject> sortedProducts = new ArrayList<>();
-//        for (int i = 0; i < products.length(); i++) {
-//            sortedProducts.add(products.getJSONObject(i));
-//        }
-//        Collections.sort(sortedProducts, new Comparator<JSONObject>() {
-//            @Override
-//            public int compare(JSONObject p1, JSONObject p2) {
-//                ZonedDateTime t1 = ZonedDateTime.parse(p1.getString("meetingTime"));
-//                ZonedDateTime t2 = ZonedDateTime.parse(p2.getString("meetingTime"));
-//                return t1.compareTo(t2);
-//            }
-//        });
 //
-//        // Aggregate products into meetings
-//        List<JSONObject> meetings = new ArrayList<>();
-//        for (JSONObject product : sortedProducts) {
-//            String clientId = product.getString("clientId");
-//            String addressId = product.getString("addressId");
-//            ZonedDateTime meetingTime = ZonedDateTime.parse(product.getString("meetingTime"));
-//            JSONObject meeting = null;
-//            for (JSONObject m : meetings) {
-//                if (m.getString("clientId").equals(clientId) && m.getString("addressId").equals(addressId)) {
-//                    meeting = m;
-//                    break;
-//                }
-//            }
-//            if (meeting == null) {
-//                meeting = new JSONObject();
-//                meeting.put("clientId", clientId);
-//                meeting.put("addressId", addressId);
-//                meeting.put("meetingTime", meetingTime.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME));
-//                meeting.put("products", new JSONArray());
-//                meetings.add(meeting);
-//            }
-//            JSONArray meetingProducts = meeting.getJSONArray("products");
-//            JSONObject productCopy = new JSONObject();
-//            productCopy.put("id", product.getString("id"));
-//            productCopy.put("type", product.getString("type"));
-//            productCopy.put("creationTime", product.getString("creationTime"));
-//            meetingProducts.put(productCopy);
-//        }
+////class PriorityDelivery
+////{
+////    public static void main(String args[])
+////    {
+////        Scanner scanner = new Scanner(System.in);
+////        String json = scanner.nextLine(); // {"products": [...]}
+////        //
+////        // products -> meetings processing
+////        //
+////        System.out.println("result here"); // {"meetings": [...]}
+////    }
+////}
 //
-//        // Format and print output JSON
-//        JSONObject output = new JSONObject();
-//        output.put("meetings", new JSONArray(meetings));
-//        System.out.println(output.toString(2));
-//    }
-//}
-
-
-
-//class PriorityDelivery
-//{
-//    public static void main(String args[])
-//    {
-//        Scanner scanner = new Scanner(System.in);
-//        String json = scanner.nextLine(); // {"products": [...]}
-//        //
-//        // products -> meetings processing
-//        //
-//        System.out.println("result here"); // {"meetings": [...]}
-//    }
-//}
-
-
+//
 //    Приоритетная доставка 💳
 //        С доставки банковских продуктов начинается сотрудничество между банком и клиентом. Важным этапом при этом является приоритезация и планирование доставок.
 //
@@ -314,8 +314,8 @@ package org.example.TinkOff;
 //        }
 //        Клиент с clientId dc86186e-c6e7-11ed-afa1-0242ac120002 заказал карту Drive Credit для себя, а потом еще и карту Black Debit для жены. Обе карты готовы к выдаче. Оба продукта попадают в одну встречу, т. к. едут к одному клиенту на один адрес. Продукты отсортированы по времени в данной встрече. Время встречи выбрано ближайшее среди meetingTime двух продуктов;
 //        Клиент с clientId a0af1e4c-c6f8-11ed-afa1-0242ac120002 заказал карту Junior Debit себе по адресу 6511875a-c70a-11ed-afa1-0242ac120002, а потом еще и карту Junior Debit для сына по адресу eb612fb8-d510-11ed-afa1-0242ac120002. Обе карты готовы к выдаче. Продукты попадают в разные встречи, т.к. едут по разным адресам. Так как время встречи и clientId у данных двух встреч одинаковые, то решающим в сортировке является поле addressId - встреча с адресом eb612fb8-d510-11ed-afa1-0242ac120002 приоритетнее встречи с адресом f2941ac0-d510-11ed-afa1-0242ac120002.ф
-
-
+//
+//
 //class PriorityDelivery
 //{
 //    public static void main(String args[])

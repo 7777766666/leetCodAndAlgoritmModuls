@@ -1,5 +1,5 @@
-package org.example.TinkOff;
-
+//package org.example.TinkOff;
+//
 //public class Airplane {
 //    private volatile boolean propellerState; // true - открыт, false - закрыт
 //    private final long propellerDelay; // задержка между изменением состояния винта
@@ -47,8 +47,8 @@ package org.example.TinkOff;
 //        }
 //    }
 //}
-
-
+//
+//
 //    Многопоточный самолёт✈️
 //        У самолёта есть 1 винт и 1 камера, которую конструкторы установили сразу за винтом. Возникает проблема, камера должна снимать, обстановку перед самолётом так, чтобы на каждом снимке не было лопастей винта самолёта
 //
